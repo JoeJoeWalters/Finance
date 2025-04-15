@@ -24,11 +24,18 @@ namespace Cards
             result.Should().Be(expectedResult);
         }
 
-        [Fact]
-        public void Given_Pan_IsUnknown()
+        /*
+        Note: Fake visa doesn't work as it's more simplistic instructure but should 
+        be combined with Luhn algorithm to be valid.
+        */
+        [Theory]
+        [InlineData("5000000000000000")] // Fake Mastercard
+        [InlineData("300000000000000")] // Fake American Express
+        [InlineData("6000000000000000")] // Fake Discover
+        [InlineData("3000000000000")] // Fake Diners Club
+        public void Given_Pan_IsUnknown(string pan)
         {
             // ARRANGE
-            string pan = "5000000000000000"; // Pretending to be mastercard
             CardType result = CardType.Unknown;
 
             // ACT
