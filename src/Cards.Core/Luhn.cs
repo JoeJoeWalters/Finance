@@ -2,6 +2,11 @@
 {
     public static class Luhn
     {
+        /// <summary>
+        /// Checks if the given Primary Account Number (PAN) is valid using the Luhn algorithm.
+        /// </summary>
+        /// <param name="pan">Primary Account Number</param>
+        /// <returns></returns>
         public static bool IsValid(string pan)
         {
             if (string.IsNullOrEmpty(pan))

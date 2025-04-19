@@ -1,7 +1,7 @@
 using Cards.Core;
 using FluentAssertions;
 
-namespace Cards
+namespace Cards.Tests
 {
     public class LuhnTests
     {

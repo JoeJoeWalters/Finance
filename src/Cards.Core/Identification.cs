@@ -12,6 +12,11 @@ namespace Cards.Core
         public static string DinersClubRegex = "^3(?:0[0-5]|[68][0-9])[0-9]{11}$";
         public static string DiscoverRegex = "^6(?:011|5[0-9]{2})[0-9]{12}$";
 
+        /// <summary>
+        /// Checks the type of card based on the PAN (Primary Account Number).
+        /// </summary>
+        /// <param name="pan">Primary Account Number</param>
+        /// <returns></returns>
         public static CardType WhatIs(string pan)
         {
             if (string.IsNullOrEmpty(pan))

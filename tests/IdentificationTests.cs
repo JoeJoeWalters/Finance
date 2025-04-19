@@ -2,7 +2,7 @@ using Cards.Core;
 using Cards.Core.Types;
 using FluentAssertions;
 
-namespace Cards
+namespace Cards.Tests
 {
     public class IdentificationTests
     {

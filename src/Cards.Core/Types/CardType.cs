@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cards.Core.Types
 {
+    /// <summary>
+    /// Enumeration representing different types of payment cards.
+    /// </summary>
     public enum CardType
     {
         Unknown,
