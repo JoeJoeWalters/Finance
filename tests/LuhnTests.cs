@@ -1,4 +1,5 @@
 using Cards.Core;
+using Cards.Core.Types;
 using FluentAssertions;
 
 namespace Cards.Tests
@@ -39,6 +40,22 @@ namespace Cards.Tests
 
             // ASSERT
             result.Should().BeFalse();
+        }
+
+        /// <summary>
+        /// The rest of the card generation tests appear under the card object tests.
+        /// </summary>
+        [Fact]
+        public void Given_Type_When_GeneratingTestCard_Should_BeValid()
+        {
+            // ARRANGE
+            string cardNumber = Luhn.GenerateCard(Identification.VisaRanges, 16);
+
+            // ACT
+
+            // ASSERT
+            Identification.WhatIs(cardNumber).Should().Be(CardType.Visa);
+            Luhn.IsValid(cardNumber).Should().BeTrue();
         }
     }
 }

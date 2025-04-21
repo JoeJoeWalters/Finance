@@ -28,5 +28,33 @@
             }
             return sum % 10 == 0;
         }
+
+        public static string GenerateCard(string[] prefixes, int totalLength)
+        {
+            // Generate a random number of the specified length - 1 (to give space for the check digit)
+            Random random = new Random();
+            bool alternate = false;
+            string prefix = prefixes[random.Next(0, prefixes.Length)];
+            string cardNumber = prefix;
+            int sum = 0;
+            for (int i = 0; i < totalLength - prefix.Length - 1; i++)
+            {
+                int value = random.Next(0, 10);
+                cardNumber += value.ToString();
+            }
+
+            for (int i = cardNumber.Length - 1; i >= 0; i--)
+            {
+                int value = int.Parse(cardNumber[i].ToString());
+                int calculatedDigit = alternate ? value : value * 2;
+                if (calculatedDigit > 9)
+                    calculatedDigit -= 9;
+
+                sum += calculatedDigit;
+                alternate = !alternate;
+            }
+            int checkDigit = (10 - (sum % 10)) % 10;
+            return cardNumber + checkDigit;
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace Cards.Tests
             card.CardType.Should().Be(expectedResult);
             card.LuhnCheck.Should().Be(luhnPass);
         }
+
         [Theory]
         [InlineData(CardType.MasterCard)] // Mastercard (16 Digits)
         [InlineData(CardType.Visa)] // Visa (16 Digits)
