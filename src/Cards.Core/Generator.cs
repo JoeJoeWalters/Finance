@@ -23,22 +23,25 @@ namespace Cards.Core
             switch (cardType)
             {
                 case CardType.Visa:
-                    cardNumber = GenerateRandomDigits("4", 15);
+                    cardNumber = GenerateRandomDigits(Identification.VisaRanges, 16);
                     break;
                 case CardType.MasterCard:
-                    cardNumber = GenerateRandomDigits("5", 15);
+                    cardNumber = GenerateRandomDigits(Identification.MastercardRanges, 16);
                     break;
                 case CardType.AmericanExpress:
-                    cardNumber = GenerateRandomDigits("34", 13);
+                    cardNumber = GenerateRandomDigits(Identification.AmericanExpressRanges, 15);
                     break;
                 case CardType.Discover:
-                    cardNumber = GenerateRandomDigits("6011", 12);
+                    cardNumber = GenerateRandomDigits(Identification.DiscoverRanges, 16);
                     break;
                 case CardType.DinersClub:
-                    cardNumber = GenerateRandomDigits("36", 13);
+                    cardNumber = GenerateRandomDigits(Identification.DinersClubRanges, 15);
                     break;
                 case CardType.JCB:
-                    cardNumber = GenerateRandomDigits("35", 14);
+                    cardNumber = GenerateRandomDigits(Identification.JCBRanges, 16);
+                    break;
+                case CardType.Maestro:
+                    cardNumber = GenerateRandomDigits(Identification.MaestroRanges, 16);
                     break;
                 default:
                     throw new ArgumentException("Unsupported card type.");
@@ -46,14 +49,15 @@ namespace Cards.Core
             return cardNumber;
         }
 
-        private static string GenerateRandomDigits(string prefix, int length)
+        private static string GenerateRandomDigits(string[] prefixes, int totalLength)
         {
             // Generate a random number of the specified length - 1 (to give space for the check digit)
             Random random = new Random();
             bool alternate = false;
+            string prefix = prefixes[random.Next(0, prefixes.Length)];
             string cardNumber = prefix;
             int sum = 0;
-            for (int i = 0; i < length - 1; i++)
+            for (int i = 0; i < totalLength - prefix.Length - 1; i++)
             {
                 int value = random.Next(0, 10);
                 cardNumber += value.ToString();

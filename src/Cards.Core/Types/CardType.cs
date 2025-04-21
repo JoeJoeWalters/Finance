@@ -9,14 +9,15 @@ namespace Cards.Core.Types
     /// <summary>
     /// Enumeration representing different types of payment cards.
     /// </summary>
-    public enum CardType
+    public enum CardType : int
     {
-        Unknown,
-        Visa,
-        MasterCard,
-        AmericanExpress,
-        Discover,
-        DinersClub,
-        JCB
+        Unknown = 0,
+        Visa = 4,
+        MasterCard = 5,
+        AmericanExpress = 34,
+        JCB = 35,
+        DinersClub = 36,
+        Discover = 65,
+        Maestro = 67
     }
 }
