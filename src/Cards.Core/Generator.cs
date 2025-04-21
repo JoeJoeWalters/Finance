@@ -19,29 +19,32 @@ namespace Cards.Core
         public static string CardNumber(CardType cardType)
         {
             Random random = new Random();
-            string cardNumber = "";
+            string cardNumber = string.Empty;
             switch (cardType)
             {
                 case CardType.Visa:
-                    cardNumber = Luhn.GenerateCard(Identification.VisaRanges, Identification.VisaLength);
+                    cardNumber = Luhn.GenerateCard(Identification.VisaMIIRanges, Identification.VisaSizeRanges, true);
                     break;
                 case CardType.MasterCard:
-                    cardNumber = Luhn.GenerateCard(Identification.MastercardRanges, Identification.MastercardLength);
+                    cardNumber = Luhn.GenerateCard(Identification.MastercardMIIRanges, Identification.MastercardSizeRanges, true);
                     break;
                 case CardType.AmericanExpress:
-                    cardNumber = Luhn.GenerateCard(Identification.AmericanExpressRanges, Identification.AmericanExpressLength);
+                    cardNumber = Luhn.GenerateCard(Identification.AmericanExpressMIIRanges, Identification.AmericanExpressSizeRanges, true);
                     break;
                 case CardType.Discover:
-                    cardNumber = Luhn.GenerateCard(Identification.DiscoverRanges, Identification.DiscoverLength);
+                    cardNumber = Luhn.GenerateCard(Identification.DiscoverMIIRanges, Identification.DiscoverSizeRanges, true);
                     break;
                 case CardType.DinersClub:
-                    cardNumber = Luhn.GenerateCard(Identification.DinersClubRanges, Identification.DinersClubLength);
+                    cardNumber = Luhn.GenerateCard(Identification.DinersClubMIIRanges, Identification.DinersClubSizeRanges, true);
                     break;
                 case CardType.JCB:
-                    cardNumber = Luhn.GenerateCard(Identification.JCBRanges, Identification.JCBLength);
+                    cardNumber = Luhn.GenerateCard(Identification.JCBMIIRanges, Identification.JCBSizeRanges, true);
                     break;
                 case CardType.Maestro:
-                    cardNumber = Luhn.GenerateCard(Identification.MaestroRanges, Identification.MaestroLength);
+                    cardNumber = Luhn.GenerateCard(Identification.MaestroMIIRanges, Identification.MaestroSizeRanges, true);
+                    break;
+                case CardType.ChinaUnionPay:
+                    cardNumber = Luhn.GenerateCard(Identification.ChinaUnionPayMIIRanges, Identification.ChinaUnionPaySizeRanges, false);
                     break;
                 default:
                     throw new ArgumentException("Unsupported card type.");

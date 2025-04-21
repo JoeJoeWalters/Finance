@@ -30,14 +30,15 @@ namespace Cards.Tests
         }
 
         [Theory]
-        [InlineData(CardType.MasterCard)] // Mastercard (16 Digits)
-        [InlineData(CardType.Visa)] // Visa (16 Digits)
-        [InlineData(CardType.AmericanExpress)] // American Express (15 Digits)
-        [InlineData(CardType.Discover)] // Discover (16 Digits)
-        [InlineData(CardType.DinersClub)] // Diners Club (14 Digits)
-        [InlineData(CardType.JCB)] // JCB (16 Digits)
-        [InlineData(CardType.Maestro)] // Maestro (16 Digits)
-        public void Given_Pan_IsType_When_RequestingTestCardOnConstructor(CardType cardType)
+        [InlineData(CardType.MasterCard, true)] // Mastercard (16 Digits)
+        [InlineData(CardType.Visa, true)] // Visa (16 Digits)
+        [InlineData(CardType.AmericanExpress, true)] // American Express (15 Digits)
+        [InlineData(CardType.Discover, true)] // Discover (16 Digits)
+        [InlineData(CardType.DinersClub, true)] // Diners Club (14 Digits)
+        [InlineData(CardType.JCB, true)] // JCB (16 Digits)
+        [InlineData(CardType.Maestro, true)] // Maestro (16 Digits)
+        [InlineData(CardType.ChinaUnionPay, false)] // China Union Pay (16 to 19 Digits)
+        public void Given_Pan_IsType_When_RequestingTestCardOnConstructor(CardType cardType, bool luhnCheck)
         {
             // ARRANGE
             Card card = new Card(cardType);
@@ -46,7 +47,8 @@ namespace Cards.Tests
 
             // ASSERT
             card.CardType.Should().Be(cardType);
-            card.LuhnCheck.Should().BeTrue();
+            if (luhnCheck)
+                card.LuhnCheck.Should().BeTrue();
         }
 
     }
