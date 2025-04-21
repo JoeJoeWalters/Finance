@@ -33,5 +33,10 @@ namespace Cards.Core
         {
             _pan = pan;
         }
+
+        public Card(CardType cardType)
+        {
+            _pan = Generator.CardNumber(cardType);
+        }
     }
 }

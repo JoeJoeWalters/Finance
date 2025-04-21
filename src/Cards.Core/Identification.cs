@@ -11,6 +11,7 @@ namespace Cards.Core
         public static string AmericanExpressRegex = "^3[47][0-9]{13}$";
         public static string DinersClubRegex = "^3(?:0[0-5]|[68][0-9])[0-9]{11}$";
         public static string DiscoverRegex = "^6(?:011|5[0-9]{2})[0-9]{12}$";
+        public static string JCBRegex = "^(?:2131|1800|35\\d{3})\\d{11}$";
 
         /// <summary>
         /// Checks the type of card based on the PAN (Primary Account Number).
@@ -35,6 +36,8 @@ namespace Cards.Core
                 return CardType.Discover;
             else if (Regex.IsMatch(pan, DinersClubRegex))
                 return CardType.DinersClub;
+            else if (Regex.IsMatch(pan, JCBRegex))
+                return CardType.JCB;
             else
                 return CardType.Unknown;
         }

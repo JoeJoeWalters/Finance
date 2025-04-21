@@ -16,6 +16,7 @@ namespace Cards.Core.Types
         MasterCard,
         AmericanExpress,
         Discover,
-        DinersClub
+        DinersClub,
+        JCB
     }
 }

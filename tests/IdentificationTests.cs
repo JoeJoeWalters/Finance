@@ -12,6 +12,7 @@ namespace Cards.Tests
         [InlineData("376566029866460", CardType.AmericanExpress)] // American Express (15 Digits)
         [InlineData("6011403526507090", CardType.Discover)] // Discover (16 Digits)
         [InlineData("30569309025904", CardType.DinersClub)] // Diners Club (14 Digits)
+        [InlineData("3530111333300000", CardType.JCB)] // JCB (16 Digits)
         public void Given_Pan_IsType(string pan, CardType expectedResult)
         {
             // ARRANGE
