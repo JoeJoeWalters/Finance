@@ -35,7 +35,7 @@ namespace Cards.Core
                     cardNumber = GenerateRandomDigits("6011", 12);
                     break;
                 case CardType.DinersClub:
-                    cardNumber = GenerateRandomDigits("3", 14);
+                    cardNumber = GenerateRandomDigits("36", 13);
                     break;
                 case CardType.JCB:
                     cardNumber = GenerateRandomDigits("35", 14);

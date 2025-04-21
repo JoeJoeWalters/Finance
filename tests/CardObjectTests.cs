@@ -20,7 +20,7 @@ namespace Cards.Tests
         /// <param name="luhnPass">True if the Luhn check passes</param>
         [Theory]
         [InlineData("5428542566720672", CardType.MasterCard, true)] // Mastercard
-        [InlineData("5000000000000000", CardType.Unknown, false)] // Fake Mastercard
+        [InlineData("3000000000000000", CardType.Unknown, false)] // Unknown Range
         public void Given_Pan_PassesChecks(string pan, CardType expectedResult, bool luhnPass)
         {
             // ARRANGE

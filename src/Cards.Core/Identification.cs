@@ -6,12 +6,12 @@ namespace Cards.Core
 {
     public static class Identification
     {
-        public static string VisaRegex = "^4[0-9]{12}(?:[0-9]{3})?$";
-        public static string MastercardRegex = "^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$";
-        public static string AmericanExpressRegex = "^3[47][0-9]{13}$";
-        public static string DinersClubRegex = "^3(?:0[0-5]|[68][0-9])[0-9]{11}$";
-        public static string DiscoverRegex = "^6(?:011|5[0-9]{2})[0-9]{12}$";
-        public static string JCBRegex = "^(?:2131|1800|35\\d{3})\\d{11}$";
+        public static string[] VisaRanges = { "40", "41", "42", "43", "44", "45", "46", "47", "48", "49" };
+        public static string[] MastercardRanges = { "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+        public static string[] AmericanExpressRanges = { "34", "37" };
+        public static string[] DinersClubRanges = { "36", "38" };
+        public static string[] DiscoverRanges = { "6011", "65" };
+        public static string[] JCBRanges = { "2131", "1800", "35" };
 
         /// <summary>
         /// Checks the type of card based on the PAN (Primary Account Number).
@@ -26,17 +26,20 @@ namespace Cards.Core
             if (pan.Length < 13 || pan.Length > 19)
                 return CardType.Unknown;
 
-            if (Regex.IsMatch(pan, VisaRegex))
+            string cardIdentifier2 = pan.Substring(0, 2);
+            string cardIdentifier4 = pan.Substring(0, 4);
+
+            if (VisaRanges.Contains(cardIdentifier2) || VisaRanges.Contains(cardIdentifier4))
                 return CardType.Visa;
-            else if (Regex.IsMatch(pan, MastercardRegex))
+            else if (MastercardRanges.Contains(cardIdentifier2) || MastercardRanges.Contains(cardIdentifier4))
                 return CardType.MasterCard;
-            else if (Regex.IsMatch(pan, AmericanExpressRegex))
+            else if (AmericanExpressRanges.Contains(cardIdentifier2) || AmericanExpressRanges.Contains(cardIdentifier4))
                 return CardType.AmericanExpress;
-            else if (Regex.IsMatch(pan, DiscoverRegex))
+            else if (DiscoverRanges.Contains(cardIdentifier2) || DiscoverRanges.Contains(cardIdentifier4))
                 return CardType.Discover;
-            else if (Regex.IsMatch(pan, DinersClubRegex))
+            else if (DinersClubRanges.Contains(cardIdentifier2) || DinersClubRanges.Contains(cardIdentifier4))
                 return CardType.DinersClub;
-            else if (Regex.IsMatch(pan, JCBRegex))
+            else if (JCBRanges.Contains(cardIdentifier2) || JCBRanges.Contains(cardIdentifier4))
                 return CardType.JCB;
             else
                 return CardType.Unknown;
