@@ -38,23 +38,61 @@ namespace Cards.Core
             string cardIdentifier2 = pan.Substring(0, 2);
             string cardIdentifier4 = pan.Substring(0, 4);
 
+            CardType result = CardType.Unknown;
+
             // NOTE: As this gets more complex, consider using a dictionary or a more structured approach
             if (VisaRanges.Contains(cardIdentifier2) || VisaRanges.Contains(cardIdentifier4))
-                return CardType.Visa;
+                result = CardType.Visa;
             else if (MastercardRanges.Contains(cardIdentifier2))
-                return CardType.MasterCard;
+                result = CardType.MasterCard;
             else if (AmericanExpressRanges.Contains(cardIdentifier2))
-                return CardType.AmericanExpress;
+                result = CardType.AmericanExpress;
             else if (DinersClubRanges.Contains(cardIdentifier2))
-                return CardType.DinersClub;
+                result = CardType.DinersClub;
             else if (DiscoverRanges.Contains(cardIdentifier2) || DiscoverRanges.Contains(cardIdentifier4))
-                return CardType.Discover;
+                result = CardType.Discover;
             else if (JCBRanges.Contains(cardIdentifier2) || JCBRanges.Contains(cardIdentifier4))
-                return CardType.JCB;
+                result = CardType.JCB;
             else if (MaestroRanges.Contains(cardIdentifier2))
-                return CardType.Maestro;
+                result = CardType.Maestro;
             else
                 return CardType.Unknown;
+
+            // Identified the type of card from the prefix, now check the length it correct
+            switch (result)
+            {
+                case CardType.Visa:
+                    if (pan.Length == VisaLength)
+                        return result;
+                    break;
+                case CardType.MasterCard:
+                    if (pan.Length == MastercardLength)
+                        return result;
+                    break;
+                case CardType.AmericanExpress:
+                    if (pan.Length == AmericanExpressLength)
+                        return result;
+                    break;
+                case CardType.DinersClub:
+                    if (pan.Length == DinersClubLength)
+                        return result;
+                    break;
+                case CardType.Discover:
+                    if (pan.Length == DiscoverLength)
+                        return result;
+                    break;
+                case CardType.JCB:
+                    if (pan.Length == JCBLength)
+                        return result;
+                    break;
+                case CardType.Maestro:
+                    if (pan.Length == MaestroLength)
+                        return result;
+                    break;
+            }
+
+            // Otherwise tell the caller that there is an issue with the card length for this type
+            throw new ArgumentException("Invalid card number length for the identified card type.", new Exception($"Length for card type '{result}' is incorrect."));
         }
 
     }

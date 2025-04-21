@@ -26,6 +26,30 @@ namespace Cards.Tests
             result.Should().Be(expectedResult);
         }
 
+        [Theory]
+        [InlineData("542854256672067", CardType.MasterCard)] // Mastercard (16 Digits)
+        [InlineData("469846766309387", CardType.Visa)] // Visa (16 Digits)
+        [InlineData("37656602986646", CardType.AmericanExpress)] // American Express (15 Digits)
+        [InlineData("601140352650709", CardType.Discover)] // Discover (16 Digits)
+        [InlineData("3656930902590", CardType.DinersClub)] // Diners Club (14 Digits)
+        [InlineData("353011133330000", CardType.JCB)] // JCB (16 Digits)
+        [InlineData("675440711796530", CardType.Maestro)] // Maestro (16 Digits)
+        public void Given_PanOfWrongLength_Should_ThrowArgumentException(string pan, CardType expectedResult)
+        {
+            // ARRANGE
+            CardType result = CardType.Unknown;
+
+            // ACT
+            Action comparison = () => { var result = Identification.WhatIs(pan); };
+
+            // ASSERT
+            comparison
+                    .Should()
+                        .Throw<ArgumentException>().WithMessage("Invalid card number length for the identified card type.")
+                    .And
+                        .InnerException.Message.Should().Be($"Length for card type '{expectedResult}' is incorrect.");
+        }
+
         /*
         Note: Fake visa and Mastercard doesn't work as it's more simplistic range (1 digit super range)
         be combined with Luhn algorithm to be valid.
