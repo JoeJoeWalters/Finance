@@ -15,6 +15,15 @@ namespace Cards.Core
         public static string[] JCBRanges = { "2131", "1800", "35" };
         public static string[] MaestroRanges = { "67" };
 
+        // lengths
+        public static int VisaLength = 16; 
+        public static int MastercardLength = 16;
+        public static int AmericanExpressLength = 15;
+        public static int DinersClubLength = 14;
+        public static int DiscoverLength = 16;
+        public static int JCBLength = 16;
+        public static int MaestroLength = 16;
+
         /// <summary>
         /// Checks the type of card based on the PAN (Primary Account Number).
         /// </summary>

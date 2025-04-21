@@ -49,7 +49,7 @@ namespace Cards.Tests
         public void Given_Type_When_GeneratingTestCard_Should_BeValid()
         {
             // ARRANGE
-            string cardNumber = Luhn.GenerateCard(Identification.VisaRanges, 16);
+            string cardNumber = Luhn.GenerateCard(Identification.VisaRanges, Identification.VisaLength);
 
             // ACT
 

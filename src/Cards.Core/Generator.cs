@@ -23,25 +23,25 @@ namespace Cards.Core
             switch (cardType)
             {
                 case CardType.Visa:
-                    cardNumber = Luhn.GenerateCard(Identification.VisaRanges, 16);
+                    cardNumber = Luhn.GenerateCard(Identification.VisaRanges, Identification.VisaLength);
                     break;
                 case CardType.MasterCard:
-                    cardNumber = Luhn.GenerateCard(Identification.MastercardRanges, 16);
+                    cardNumber = Luhn.GenerateCard(Identification.MastercardRanges, Identification.MastercardLength);
                     break;
                 case CardType.AmericanExpress:
-                    cardNumber = Luhn.GenerateCard(Identification.AmericanExpressRanges, 15);
+                    cardNumber = Luhn.GenerateCard(Identification.AmericanExpressRanges, Identification.AmericanExpressLength);
                     break;
                 case CardType.Discover:
-                    cardNumber = Luhn.GenerateCard(Identification.DiscoverRanges, 16);
+                    cardNumber = Luhn.GenerateCard(Identification.DiscoverRanges, Identification.DiscoverLength);
                     break;
                 case CardType.DinersClub:
-                    cardNumber = Luhn.GenerateCard(Identification.DinersClubRanges, 15);
+                    cardNumber = Luhn.GenerateCard(Identification.DinersClubRanges, Identification.DinersClubLength);
                     break;
                 case CardType.JCB:
-                    cardNumber = Luhn.GenerateCard(Identification.JCBRanges, 16);
+                    cardNumber = Luhn.GenerateCard(Identification.JCBRanges, Identification.JCBLength);
                     break;
                 case CardType.Maestro:
-                    cardNumber = Luhn.GenerateCard(Identification.MaestroRanges, 16);
+                    cardNumber = Luhn.GenerateCard(Identification.MaestroRanges, Identification.MaestroLength);
                     break;
                 default:
                     throw new ArgumentException("Unsupported card type.");

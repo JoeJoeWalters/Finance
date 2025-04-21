@@ -1,10 +1,5 @@
-﻿using Cards.Core.Types;
-using Cards.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cards.Core;
+using Cards.Core.Types;
 using FluentAssertions;
 
 namespace Cards.Tests
