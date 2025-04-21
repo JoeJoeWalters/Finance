@@ -26,6 +26,8 @@ namespace Cards.Tests
             result.Should().Be(expectedResult);
         }
 
+        // Note: does comparison on pattern only and no luhn check at the same time 
+        // which means form and not validity
         [Theory]
         [InlineData("542854256672067", CardType.MasterCard)] // Mastercard (16 Digits)
         [InlineData("469846766309387", CardType.Visa)] // Visa (16 Digits)
