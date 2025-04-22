@@ -13,7 +13,7 @@ namespace Cards.Core
         public static string[] MastercardMIIRanges = { "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "2221-2720" };
         public static string[] AmericanExpressMIIRanges = { "34", "37" };
         public static string[] DinersClubMIIRanges = { "36", "38" };
-        public static string[] DiscoverMIIRanges = { "6011", "644-649", "65" };
+        public static string[] DiscoverMIIRanges = { "6011", "6440-6499", "65" };
         public static string[] JCBMIIRanges = { "2131", "1800", "35" };
         public static string[] MaestroMIIRanges = { "67" };
         public static string[] ChinaUnionPayMIIRanges = { "622126-622925"}; // UnionPay co-branded
