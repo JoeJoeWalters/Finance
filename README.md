@@ -19,7 +19,22 @@ This library targets **.NET 8**. Add the project to your solution or include it 
 
 ## Usage
 
-### 1. **Card Class**
+### **BINRange Class**
+
+#### Constructor Overloads:
+- - **`BINRange()`** 
+Initializes a new instance of the BINRange class with default values.
+
+- **`BINRange(string id, Range[] ranges)`** 
+Initializes a new instance of the BINRange class with the specified identifier and ranges.
+
+#### Example:
+
+```csharp
+var binRange = new BINRange("Visa", new Range[] { new Range(4000, 4999) });
+```
+
+### **Card Class**
 The `Card` class represents a payment card and provides methods to identify its type and validate its PAN.
 
 #### Constructor Overloads:
@@ -48,7 +63,7 @@ var card = new Card(CardType.Visa); Console.WriteLine(card.Pan); // Output: Rand
 
 ---
 
-### 2. **Generator Class**
+### **Generator Class**
 The `Generator` class provides methods to generate random card numbers.
 
 #### Methods:
@@ -64,7 +79,7 @@ var cardNumber = Generator.CardNumber(CardType.MasterCard); Console.WriteLine(ca
 
 ---
 
-### 3. **Identification Class**
+### **Identification Class**
 The `Identification` class provides methods to determine the type of a card based on its PAN.
 
 #### Methods:
@@ -79,7 +94,7 @@ var cardType = Identification.WhatIs("4111111111111111"); Console.WriteLine(card
 
 ---
 
-### 4. **Luhn Class**
+### **Luhn Class**
 The `Luhn` class provides methods for validating and generating card numbers using the Luhn algorithm.
 
 #### Methods:

@@ -16,10 +16,10 @@ namespace Cards.Core
         public static string[] DiscoverMIIRanges = { "6011", "6440-6499", "65" };
         public static string[] JCBMIIRanges = { "2131", "1800", "35" };
         public static string[] MaestroMIIRanges = { "67" };
-        public static string[] ChinaUnionPayMIIRanges = { "622126-622925"}; // UnionPay co-branded
+        public static string[] ChinaUnionPayMIIRanges = { "622126-622925" }; // UnionPay co-branded
 
         // lengths
-        public static Range VisaSizeRanges = new Range(16, 16); 
+        public static Range VisaSizeRanges = new Range(16, 16);
         public static Range MastercardSizeRanges = new Range(16, 16);
         public static Range AmericanExpressSizeRanges = new Range(15, 15);
         public static Range DinersClubSizeRanges = new Range(14, 14);
