@@ -27,6 +27,13 @@ Initializes a new instance of the BINRange class with default values.
 
 - **`BINRange(string id, Range[] ranges)`** 
 Initializes a new instance of the BINRange class with the specified identifier and ranges.
+- 
+#### Properties:
+- **`string Id`**  
+  Returns the Identifier of the BIN range.
+
+- **`Range[] Ranges`**  
+  Numerical ranges for the BIN. Each range is represented as a `Range` object, which contains a start and end value.
 
 #### Example:
 
