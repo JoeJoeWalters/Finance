@@ -93,10 +93,17 @@ The `Identification` class provides methods to determine the type of a card base
 - **`CardType WhatIs(string pan)`**  
   Determines the card type based on the PAN.
 
+- **`BINRange InRange(BINRange[] ranges, string pan)`**  
+  Determines the bin range a card is within.  
+
 #### Example:
 
 ```csharp
-var cardType = Identification.WhatIs("4111111111111111"); Console.WriteLine(cardType); // Output: Visa
+var cardType = Identification.WhatIs("4111111111111111"); Console.WriteLine(cardType);
+```
+
+```csharp
+BINRange result = Identification.InRange(new BINRange(CardType.Visa.ToString(), new Range[] { new Range(4000, 4999) }), "4111111111111111");
 ```
 
 ---
