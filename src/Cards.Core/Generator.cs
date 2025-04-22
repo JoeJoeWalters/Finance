@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,28 @@ namespace Cards.Core
 {
     public static class Generator
     {
+        public static string[] GenerateRanges(string[] range)
+        {
+            string[] result = new string[] { };
+
+            for (var i = 0; i < range.Length; i++)
+            {
+                if (range[i].Contains("-"))
+                {
+                    string[] strings = range[i].Split('-');
+                    for (var r = Convert.ToInt32(strings[0]); r <= Convert.ToInt32(strings[1]); r++)
+                    {
+                        string value = r.ToString();
+                        result = result.Append(value).ToArray();
+                    }
+                }
+                else
+                    result = result.Append(range[i]).ToArray();
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Generates a random card number of the specified type.
         /// </summary>
@@ -26,13 +49,13 @@ namespace Cards.Core
                     cardNumber = Luhn.GenerateCard(Identification.VisaMIIRanges, Identification.VisaSizeRanges, true);
                     break;
                 case CardType.MasterCard:
-                    cardNumber = Luhn.GenerateCard(Identification.MastercardMIIRanges, Identification.MastercardSizeRanges, true);
+                    cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.MastercardMIIRanges), Identification.MastercardSizeRanges, true);
                     break;
                 case CardType.AmericanExpress:
                     cardNumber = Luhn.GenerateCard(Identification.AmericanExpressMIIRanges, Identification.AmericanExpressSizeRanges, true);
                     break;
                 case CardType.Discover:
-                    cardNumber = Luhn.GenerateCard(Identification.DiscoverMIIRanges, Identification.DiscoverSizeRanges, true);
+                    cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.DiscoverMIIRanges), Identification.DiscoverSizeRanges, true);
                     break;
                 case CardType.DinersClub:
                     cardNumber = Luhn.GenerateCard(Identification.DinersClubMIIRanges, Identification.DinersClubSizeRanges, true);

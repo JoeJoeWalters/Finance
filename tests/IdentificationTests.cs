@@ -71,5 +71,21 @@ namespace Cards.Tests
             // ASSERT
             result.Should().Be(CardType.Unknown);
         }
+
+        [Theory]
+        [InlineData("4005519200000004", CardType.Visa, 40054, 40056)]
+        [InlineData("2223000048400011", CardType.MasterCard, 2221, 2720)]
+        public void Given_BINRangeAndPan_Then_FindRange(string pan, CardType cardType, int rangeFrom, int rangeTo)
+        {
+            // ARRANGE
+            Range testRange = new Range(rangeFrom, rangeTo);
+            BINRange binRange = new BINRange(cardType.ToString(), new Range[] { testRange });
+
+            // ACT
+            BINRange result = Identification.InRange(new BINRange[] { binRange }, pan);
+
+            // ASSERT
+            result.Should().BeEquivalentTo(binRange);
+        }
     }
 }

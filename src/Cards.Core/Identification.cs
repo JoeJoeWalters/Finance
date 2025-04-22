@@ -1,5 +1,6 @@
 ﻿using Cards.Core.Types;
 using System.Data;
+using System.Diagnostics;
 using System.Numerics;
 using System.Text.RegularExpressions;
 
@@ -9,20 +10,20 @@ namespace Cards.Core
     {
         // Reference : https://stevemorse.org/ssn/List_of_Bank_Identification_Numbers.html
         public static string[] VisaMIIRanges = { "40", "41", "42", "43", "44", "45", "46", "47", "48", "49" };
-        public static string[] MastercardMIIRanges = { "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+        public static string[] MastercardMIIRanges = { "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "2221-2720" };
         public static string[] AmericanExpressMIIRanges = { "34", "37" };
         public static string[] DinersClubMIIRanges = { "36", "38" };
-        public static string[] DiscoverMIIRanges = { "6011", "65" };
+        public static string[] DiscoverMIIRanges = { "6011", "644-649", "65" };
         public static string[] JCBMIIRanges = { "2131", "1800", "35" };
         public static string[] MaestroMIIRanges = { "67" };
-        public static string[] ChinaUnionPayMIIRanges = { "62" };
+        public static string[] ChinaUnionPayMIIRanges = { "622126-622925"}; // UnionPay co-branded
 
         // lengths
         public static Range VisaSizeRanges = new Range(16, 16); 
         public static Range MastercardSizeRanges = new Range(16, 16);
         public static Range AmericanExpressSizeRanges = new Range(15, 15);
         public static Range DinersClubSizeRanges = new Range(14, 14);
-        public static Range DiscoverSizeRanges = new Range(16, 16);
+        public static Range DiscoverSizeRanges = new Range(16, 19);
         public static Range JCBSizeRanges = new Range(16, 16);
         public static Range MaestroSizeRanges = new Range(16, 16);
         public static Range ChinaUnionPaySizeRanges = new Range(16, 19);
@@ -43,16 +44,20 @@ namespace Cards.Core
 
             CardType result = CardType.Unknown;
 
+            // Custom ranges for specfic card types
+            string[] masterCardFullRanges = Generator.GenerateRanges(MastercardMIIRanges);
+            string[] discoverCardFullRanges = Generator.GenerateRanges(DiscoverMIIRanges);
+
             // NOTE: As this gets more complex, consider using a dictionary or a more structured approach
             if (VisaMIIRanges.Contains(cardIdentifier2) || VisaMIIRanges.Contains(cardIdentifier4))
                 result = CardType.Visa;
-            else if (MastercardMIIRanges.Contains(cardIdentifier2))
+            else if (masterCardFullRanges.Contains(cardIdentifier2) || masterCardFullRanges.Contains(cardIdentifier4))
                 result = CardType.MasterCard;
             else if (AmericanExpressMIIRanges.Contains(cardIdentifier2))
                 result = CardType.AmericanExpress;
             else if (DinersClubMIIRanges.Contains(cardIdentifier2))
                 result = CardType.DinersClub;
-            else if (DiscoverMIIRanges.Contains(cardIdentifier2) || DiscoverMIIRanges.Contains(cardIdentifier4))
+            else if (discoverCardFullRanges.Contains(cardIdentifier2) || discoverCardFullRanges.Contains(cardIdentifier4))
                 result = CardType.Discover;
             else if (JCBMIIRanges.Contains(cardIdentifier2) || JCBMIIRanges.Contains(cardIdentifier4))
                 result = CardType.JCB;
@@ -104,5 +109,29 @@ namespace Cards.Core
             throw new ArgumentException("Invalid card number length for the identified card type.", new Exception($"Length for card type '{result}' is incorrect."));
         }
 
+
+        public static BINRange InRange(BINRange[] ranges, string pan)
+        {
+            if (string.IsNullOrEmpty(pan) || pan.Length < 13 || pan.Length > 19)
+                return null;
+
+            foreach (var range in ranges)
+            {
+                foreach (var r in range.Ranges)
+                {
+                    for (int i = r.Start.Value; i <= r.End.Value; i++)
+                    {
+                        string startsWith = i.ToString();
+                        string cardIdentifier = pan.Substring(0, startsWith.Length);
+                        if (cardIdentifier == i.ToString())
+                        {
+                            return range;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }
