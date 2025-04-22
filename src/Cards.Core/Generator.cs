@@ -67,7 +67,7 @@ namespace Cards.Core
                     cardNumber = Luhn.GenerateCard(Identification.MaestroMIIRanges, Identification.MaestroSizeRanges, true);
                     break;
                 case CardType.ChinaUnionPay:
-                    cardNumber = Luhn.GenerateCard(Identification.ChinaUnionPayMIIRanges, Identification.ChinaUnionPaySizeRanges, false);
+                    cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.ChinaUnionPayMIIRanges), Identification.ChinaUnionPaySizeRanges, false);
                     break;
                 default:
                     throw new ArgumentException("Unsupported card type.");

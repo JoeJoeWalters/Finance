@@ -41,12 +41,14 @@ namespace Cards.Core
             // Some cards use 2 and 4 digit prefixes
             string cardIdentifier2 = pan.Substring(0, 2);
             string cardIdentifier4 = pan.Substring(0, 4);
+            string cardIdentifier6 = pan.Substring(0, 6);
 
             CardType result = CardType.Unknown;
 
             // Custom ranges for specfic card types
             string[] masterCardFullRanges = Generator.GenerateRanges(MastercardMIIRanges);
             string[] discoverCardFullRanges = Generator.GenerateRanges(DiscoverMIIRanges);
+            string[] chinaUnionPayCardFullRanges = Generator.GenerateRanges(ChinaUnionPayMIIRanges);
 
             // NOTE: As this gets more complex, consider using a dictionary or a more structured approach
             if (VisaMIIRanges.Contains(cardIdentifier2) || VisaMIIRanges.Contains(cardIdentifier4))
@@ -63,7 +65,7 @@ namespace Cards.Core
                 result = CardType.JCB;
             else if (MaestroMIIRanges.Contains(cardIdentifier2))
                 result = CardType.Maestro;
-            else if (ChinaUnionPayMIIRanges.Contains(cardIdentifier2))
+            else if (chinaUnionPayCardFullRanges.Contains(cardIdentifier6))
                 result = CardType.ChinaUnionPay;
             else
                 return CardType.Unknown;

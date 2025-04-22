@@ -41,9 +41,9 @@ namespace Cards.Tests
         public void Given_Pan_IsType_When_RequestingTestCardOnConstructor(CardType cardType, bool luhnCheck)
         {
             // ARRANGE
-            Card card = new Card(cardType);
 
             // ACT
+            Card card = new Card(cardType);
 
             // ASSERT
             card.CardType.Should().Be(cardType);
