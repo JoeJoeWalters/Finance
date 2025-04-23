@@ -9,16 +9,18 @@ namespace Cards.Core
     public static class Identification
     {
         // Reference : https://stevemorse.org/ssn/List_of_Bank_Identification_Numbers.html
-        public static string[] VisaMIIRanges = { "40", "41", "42", "43", "44", "45", "46", "47", "48", "49" };
-        public static string[] MastercardMIIRanges = { "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "2221-2720" };
+        public static string[] UATPMIIRanges = { "10-19" };
         public static string[] AmericanExpressMIIRanges = { "34", "37" };
         public static string[] DinersClubMIIRanges = { "36", "38" };
+        public static string[] VisaMIIRanges = { "40-49" };
+        public static string[] MastercardMIIRanges = { "50-59", "2221-2720" };
         public static string[] DiscoverMIIRanges = { "6011", "6440-6499", "65" };
         public static string[] JCBMIIRanges = { "2131", "1800", "35" };
         public static string[] MaestroMIIRanges = { "67" };
         public static string[] ChinaUnionPayMIIRanges = { "622126-622925" }; // UnionPay co-branded
 
         // lengths
+        public static Range UATPSizeRanges = new Range(15, 15);
         public static Range VisaSizeRanges = new Range(16, 16);
         public static Range MastercardSizeRanges = new Range(16, 16);
         public static Range AmericanExpressSizeRanges = new Range(15, 15);
@@ -46,12 +48,14 @@ namespace Cards.Core
             CardType result = CardType.Unknown;
 
             // Custom ranges for specfic card types
+            string[] uatpFullRanges = Generator.GenerateRanges(UATPMIIRanges);
+            string[] visaFullRanges = Generator.GenerateRanges(VisaMIIRanges);
             string[] masterCardFullRanges = Generator.GenerateRanges(MastercardMIIRanges);
             string[] discoverCardFullRanges = Generator.GenerateRanges(DiscoverMIIRanges);
             string[] chinaUnionPayCardFullRanges = Generator.GenerateRanges(ChinaUnionPayMIIRanges);
 
             // NOTE: As this gets more complex, consider using a dictionary or a more structured approach
-            if (VisaMIIRanges.Contains(cardIdentifier2) || VisaMIIRanges.Contains(cardIdentifier4))
+            if (visaFullRanges.Contains(cardIdentifier2) || visaFullRanges.Contains(cardIdentifier4))
                 result = CardType.Visa;
             else if (masterCardFullRanges.Contains(cardIdentifier2) || masterCardFullRanges.Contains(cardIdentifier4))
                 result = CardType.MasterCard;
@@ -67,6 +71,8 @@ namespace Cards.Core
                 result = CardType.Maestro;
             else if (chinaUnionPayCardFullRanges.Contains(cardIdentifier6))
                 result = CardType.ChinaUnionPay;
+            else if (uatpFullRanges.Contains(cardIdentifier2))
+                result = CardType.UATP;
             else
                 return CardType.Unknown;
 
@@ -103,6 +109,10 @@ namespace Cards.Core
                     break;
                 case CardType.ChinaUnionPay:
                     if (pan.Length >= ChinaUnionPaySizeRanges.Start.Value && pan.Length <= ChinaUnionPaySizeRanges.End.Value)
+                        return result;
+                    break;
+                case CardType.UATP:
+                    if (pan.Length >= UATPSizeRanges.Start.Value && pan.Length <= UATPSizeRanges.End.Value)
                         return result;
                     break;
             }

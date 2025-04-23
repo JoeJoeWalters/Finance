@@ -9,6 +9,7 @@ namespace Cards.Tests
     public class IdentificationTests
     {
         [Theory]
+        [InlineData("142854256672067", CardType.UATP)] // UATP (15 Digits)
         [InlineData("5428542566720672", CardType.MasterCard)] // Mastercard (16 Digits)
         [InlineData("4698467663093870", CardType.Visa)] // Visa (16 Digits)
         [InlineData("376566029866460", CardType.AmericanExpress)] // American Express (15 Digits)
@@ -31,6 +32,7 @@ namespace Cards.Tests
         // Note: does comparison on pattern only and no luhn check at the same time 
         // which means form and not validity
         [Theory]
+        [InlineData("1428542566720", CardType.UATP)] // UATP (15 Digits)
         [InlineData("542854256672067", CardType.MasterCard)] // Mastercard (16 Digits)
         [InlineData("469846766309387", CardType.Visa)] // Visa (16 Digits)
         [InlineData("37656602986646", CardType.AmericanExpress)] // American Express (15 Digits)

@@ -30,6 +30,7 @@ namespace Cards.Tests
         }
 
         [Theory]
+        [InlineData(CardType.UATP, true)] // UATP (15 Digits)
         [InlineData(CardType.MasterCard, true)] // Mastercard (16 Digits)
         [InlineData(CardType.Visa, true)] // Visa (16 Digits)
         [InlineData(CardType.AmericanExpress, true)] // American Express (15 Digits)

@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace Cards.Core
 {
@@ -68,6 +69,9 @@ namespace Cards.Core
                     break;
                 case CardType.ChinaUnionPay:
                     cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.ChinaUnionPayMIIRanges), Identification.ChinaUnionPaySizeRanges, false);
+                    break;
+                case CardType.UATP:
+                    cardNumber = Luhn.GenerateCard(Identification.UATPMIIRanges, Identification.UATPSizeRanges, true);
                     break;
                 default:
                     throw new ArgumentException("Unsupported card type.");

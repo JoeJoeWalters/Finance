@@ -7,6 +7,7 @@ namespace Cards.Tests
     public class LuhnTests
     {
         [Theory]
+        [InlineData("142834460496459")] // UATP (15 Digits)
         [InlineData("5428542566720672")] // Mastercard (16 Digits)
         [InlineData("4698467663093870")] // Visa (16 Digits)
         [InlineData("376566029866460")] // American Express (15 Digits)
@@ -25,6 +26,7 @@ namespace Cards.Tests
         }
 
         [Theory]
+        [InlineData("142854256672067")] // UATP (15 Digits)
         [InlineData("5428542566720671")] // Mastercard (16 Digits)
         [InlineData("4698467663093871")] // Visa (16 Digits)
         [InlineData("376566029866461")] // American Express (15 Digits)
