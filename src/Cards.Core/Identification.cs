@@ -8,28 +8,6 @@ namespace Cards.Core
 {
     public static class Identification
     {
-        // Reference : https://stevemorse.org/ssn/List_of_Bank_Identification_Numbers.html
-        public static string[] UATPMIIRanges = { "10-19" };
-        public static string[] AmericanExpressMIIRanges = { "34", "37" };
-        public static string[] DinersClubMIIRanges = { "36", "38" };
-        public static string[] VisaMIIRanges = { "40-49" };
-        public static string[] MastercardMIIRanges = { "50-59", "2221-2720" };
-        public static string[] DiscoverMIIRanges = { "6011", "6440-6499", "65" };
-        public static string[] JCBMIIRanges = { "2131", "1800", "35" };
-        public static string[] MaestroMIIRanges = { "67" };
-        public static string[] ChinaUnionPayMIIRanges = { "622126-622925" }; // UnionPay co-branded
-
-        // lengths
-        public static Range UATPSizeRanges = new Range(15, 15);
-        public static Range VisaSizeRanges = new Range(16, 16);
-        public static Range MastercardSizeRanges = new Range(16, 16);
-        public static Range AmericanExpressSizeRanges = new Range(15, 15);
-        public static Range DinersClubSizeRanges = new Range(14, 14);
-        public static Range DiscoverSizeRanges = new Range(16, 19);
-        public static Range JCBSizeRanges = new Range(16, 16);
-        public static Range MaestroSizeRanges = new Range(16, 16);
-        public static Range ChinaUnionPaySizeRanges = new Range(16, 19);
-
         /// <summary>
         /// Checks the type of card based on the PAN (Primary Account Number).
         /// </summary>
@@ -48,26 +26,26 @@ namespace Cards.Core
             CardType result = CardType.Unknown;
 
             // Custom ranges for specfic card types
-            string[] uatpFullRanges = Generator.GenerateRanges(UATPMIIRanges);
-            string[] visaFullRanges = Generator.GenerateRanges(VisaMIIRanges);
-            string[] masterCardFullRanges = Generator.GenerateRanges(MastercardMIIRanges);
-            string[] discoverCardFullRanges = Generator.GenerateRanges(DiscoverMIIRanges);
-            string[] chinaUnionPayCardFullRanges = Generator.GenerateRanges(ChinaUnionPayMIIRanges);
+            string[] uatpFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.UATP].CardMIIRanges);
+            string[] visaFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.Visa].CardMIIRanges);
+            string[] masterCardFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.MasterCard].CardMIIRanges);
+            string[] discoverCardFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.Discover].CardMIIRanges);
+            string[] chinaUnionPayCardFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.ChinaUnionPay].CardMIIRanges);
 
             // NOTE: As this gets more complex, consider using a dictionary or a more structured approach
             if (visaFullRanges.Contains(cardIdentifier2) || visaFullRanges.Contains(cardIdentifier4))
                 result = CardType.Visa;
             else if (masterCardFullRanges.Contains(cardIdentifier2) || masterCardFullRanges.Contains(cardIdentifier4))
                 result = CardType.MasterCard;
-            else if (AmericanExpressMIIRanges.Contains(cardIdentifier2))
+            else if (CardIdentity.Features[CardType.AmericanExpress].CardMIIRanges.Contains(cardIdentifier2))
                 result = CardType.AmericanExpress;
-            else if (DinersClubMIIRanges.Contains(cardIdentifier2))
+            else if (CardIdentity.Features[CardType.DinersClub].CardMIIRanges.Contains(cardIdentifier2))
                 result = CardType.DinersClub;
             else if (discoverCardFullRanges.Contains(cardIdentifier2) || discoverCardFullRanges.Contains(cardIdentifier4))
                 result = CardType.Discover;
-            else if (JCBMIIRanges.Contains(cardIdentifier2) || JCBMIIRanges.Contains(cardIdentifier4))
+            else if (CardIdentity.Features[CardType.JCB].CardMIIRanges.Contains(cardIdentifier2) || CardIdentity.Features[CardType.JCB].CardMIIRanges.Contains(cardIdentifier4))
                 result = CardType.JCB;
-            else if (MaestroMIIRanges.Contains(cardIdentifier2))
+            else if (CardIdentity.Features[CardType.Maestro].CardMIIRanges.Contains(cardIdentifier2))
                 result = CardType.Maestro;
             else if (chinaUnionPayCardFullRanges.Contains(cardIdentifier6))
                 result = CardType.ChinaUnionPay;
@@ -77,45 +55,9 @@ namespace Cards.Core
                 return CardType.Unknown;
 
             // Identified the type of card from the prefix, now check the length it correct
-            switch (result)
-            {
-                case CardType.Visa:
-                    if (pan.Length >= VisaSizeRanges.Start.Value && pan.Length <= VisaSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.MasterCard:
-                    if (pan.Length >= MastercardSizeRanges.Start.Value && pan.Length <= MastercardSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.AmericanExpress:
-                    if (pan.Length >= AmericanExpressSizeRanges.Start.Value && pan.Length <= AmericanExpressSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.DinersClub:
-                    if (pan.Length >= DinersClubSizeRanges.Start.Value && pan.Length <= DinersClubSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.Discover:
-                    if (pan.Length >= DiscoverSizeRanges.Start.Value && pan.Length <= DiscoverSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.JCB:
-                    if (pan.Length >= JCBSizeRanges.Start.Value && pan.Length <= JCBSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.Maestro:
-                    if (pan.Length >= MaestroSizeRanges.Start.Value && pan.Length <= MaestroSizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.ChinaUnionPay:
-                    if (pan.Length >= ChinaUnionPaySizeRanges.Start.Value && pan.Length <= ChinaUnionPaySizeRanges.End.Value)
-                        return result;
-                    break;
-                case CardType.UATP:
-                    if (pan.Length >= UATPSizeRanges.Start.Value && pan.Length <= UATPSizeRanges.End.Value)
-                        return result;
-                    break;
-            }
+            Range range = CardIdentity.Features[result].CardSizeRanges;
+            if (pan.Length >= range.Start.Value && pan.Length <= range.End.Value)
+                return result;
 
             // Otherwise tell the caller that there is an issue with the card length for this type
             throw new ArgumentException("Invalid card number length for the identified card type.", new Exception($"Length for card type '{result}' is incorrect."));

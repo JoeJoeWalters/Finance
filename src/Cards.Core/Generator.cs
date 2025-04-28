@@ -43,40 +43,11 @@ namespace Cards.Core
         public static string CardNumber(CardType cardType)
         {
             Random random = new Random();
-            string cardNumber = string.Empty;
-            switch (cardType)
-            {
-                case CardType.Visa:
-                    cardNumber = Luhn.GenerateCard(Identification.VisaMIIRanges, Identification.VisaSizeRanges, true);
-                    break;
-                case CardType.MasterCard:
-                    cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.MastercardMIIRanges), Identification.MastercardSizeRanges, true);
-                    break;
-                case CardType.AmericanExpress:
-                    cardNumber = Luhn.GenerateCard(Identification.AmericanExpressMIIRanges, Identification.AmericanExpressSizeRanges, true);
-                    break;
-                case CardType.Discover:
-                    cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.DiscoverMIIRanges), Identification.DiscoverSizeRanges, true);
-                    break;
-                case CardType.DinersClub:
-                    cardNumber = Luhn.GenerateCard(Identification.DinersClubMIIRanges, Identification.DinersClubSizeRanges, true);
-                    break;
-                case CardType.JCB:
-                    cardNumber = Luhn.GenerateCard(Identification.JCBMIIRanges, Identification.JCBSizeRanges, true);
-                    break;
-                case CardType.Maestro:
-                    cardNumber = Luhn.GenerateCard(Identification.MaestroMIIRanges, Identification.MaestroSizeRanges, true);
-                    break;
-                case CardType.ChinaUnionPay:
-                    cardNumber = Luhn.GenerateCard(Generator.GenerateRanges(Identification.ChinaUnionPayMIIRanges), Identification.ChinaUnionPaySizeRanges, false);
-                    break;
-                case CardType.UATP:
-                    cardNumber = Luhn.GenerateCard(Identification.UATPMIIRanges, Identification.UATPSizeRanges, true);
-                    break;
-                default:
-                    throw new ArgumentException("Unsupported card type.");
-            }
-            return cardNumber;
+            
+            if (!CardIdentity.Features.ContainsKey(cardType))
+                throw new ArgumentException($"Unsupported card type: {cardType}");
+
+            return Luhn.GenerateCard(CardIdentity.Features[cardType].CardMIIRanges, CardIdentity.Features[cardType].CardSizeRanges, true);
         }
     }
 }
