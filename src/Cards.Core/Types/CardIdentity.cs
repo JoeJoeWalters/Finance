@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,15 @@ namespace Cards.Core.Types
             { CardType.Maestro, new CardFeatures(new string[] { "67"}, new Range(16, 16 )) },
             { CardType.ChinaUnionPay, new CardFeatures(new string[] { "622126-622925"}, new Range(16, 19 )) },
         };
+
+        private static Dictionary<CardType, string[]> _generatedMIIRanges = new Dictionary<CardType, string[]>();
+
+        public static string[] MIIRange(CardType cardType)
+        {
+            if (!_generatedMIIRanges.ContainsKey(cardType))
+                _generatedMIIRanges[cardType] = Generator.GenerateRanges(Features[cardType].CardMIIRanges);
+
+            return _generatedMIIRanges[cardType];
+        }
     }
 }

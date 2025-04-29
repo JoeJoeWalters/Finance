@@ -24,35 +24,17 @@ namespace Cards.Core
             string cardIdentifier6 = pan.Substring(0, 6);
 
             CardType result = CardType.Unknown;
-
-            // Custom ranges for specfic card types
-            string[] uatpFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.UATP].CardMIIRanges);
-            string[] visaFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.Visa].CardMIIRanges);
-            string[] masterCardFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.MasterCard].CardMIIRanges);
-            string[] discoverCardFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.Discover].CardMIIRanges);
-            string[] chinaUnionPayCardFullRanges = Generator.GenerateRanges(CardIdentity.Features[CardType.ChinaUnionPay].CardMIIRanges);
-
-            // NOTE: As this gets more complex, consider using a dictionary or a more structured approach
-            if (visaFullRanges.Contains(cardIdentifier2) || visaFullRanges.Contains(cardIdentifier4))
-                result = CardType.Visa;
-            else if (masterCardFullRanges.Contains(cardIdentifier2) || masterCardFullRanges.Contains(cardIdentifier4))
-                result = CardType.MasterCard;
-            else if (CardIdentity.Features[CardType.AmericanExpress].CardMIIRanges.Contains(cardIdentifier2))
-                result = CardType.AmericanExpress;
-            else if (CardIdentity.Features[CardType.DinersClub].CardMIIRanges.Contains(cardIdentifier2))
-                result = CardType.DinersClub;
-            else if (discoverCardFullRanges.Contains(cardIdentifier2) || discoverCardFullRanges.Contains(cardIdentifier4))
-                result = CardType.Discover;
-            else if (CardIdentity.Features[CardType.JCB].CardMIIRanges.Contains(cardIdentifier2) || CardIdentity.Features[CardType.JCB].CardMIIRanges.Contains(cardIdentifier4))
-                result = CardType.JCB;
-            else if (CardIdentity.Features[CardType.Maestro].CardMIIRanges.Contains(cardIdentifier2))
-                result = CardType.Maestro;
-            else if (chinaUnionPayCardFullRanges.Contains(cardIdentifier6))
-                result = CardType.ChinaUnionPay;
-            else if (uatpFullRanges.Contains(cardIdentifier2))
-                result = CardType.UATP;
-            else
-                return CardType.Unknown;
+            foreach(var feature in CardIdentity.Features)
+            {
+                if (CardIdentity.MIIRange(feature.Key).Contains(cardIdentifier2) ||
+                    CardIdentity.MIIRange(feature.Key).Contains(cardIdentifier4) ||
+                    CardIdentity.MIIRange(feature.Key).Contains(cardIdentifier6))
+                {
+                    result = feature.Key;
+                    break;
+                }
+            }
+            if (result == CardType.Unknown) return result;
 
             // Identified the type of card from the prefix, now check the length it correct
             Range range = CardIdentity.Features[result].CardSizeRanges;
