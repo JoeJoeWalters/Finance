@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Cards.Core\Cards.Core.csproj" />
+    <ProjectReference Include="..\..\src\Finance.Cards.Core\Finance.Cards.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
