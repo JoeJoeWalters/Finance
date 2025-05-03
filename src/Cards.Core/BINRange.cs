@@ -1,4 +1,4 @@
-﻿namespace Cards.Core
+﻿namespace Finance.Cards.Core
 {
     public class BINRange
     {

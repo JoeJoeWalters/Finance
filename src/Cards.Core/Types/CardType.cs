@@ -1,4 +1,4 @@
-﻿namespace Cards.Core.Types
+﻿namespace Finance.Cards.Core.Types
 {
     /// <summary>
     /// Enumeration representing different types of payment cards.

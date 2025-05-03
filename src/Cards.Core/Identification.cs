@@ -1,6 +1,6 @@
-﻿using Cards.Core.Types;
+﻿using Finance.Cards.Core.Types;
 
-namespace Cards.Core
+namespace Finance.Cards.Core
 {
     public static class Identification
     {

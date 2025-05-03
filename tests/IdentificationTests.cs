@@ -1,8 +1,8 @@
-using Cards.Core;
-using Cards.Core.Types;
+using Finance.Cards.Core;
+using Finance.Cards.Core.Types;
 using FluentAssertions;
 
-namespace Cards.Tests
+namespace Finance.Cards.Tests
 {
     public class IdentificationTests
     {
