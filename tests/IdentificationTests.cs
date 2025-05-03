@@ -1,8 +1,6 @@
 using Cards.Core;
 using Cards.Core.Types;
 using FluentAssertions;
-using Microsoft.VisualBasic;
-using System;
 
 namespace Cards.Tests
 {

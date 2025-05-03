@@ -1,6 +1,4 @@
-﻿using Cards.Core.Types;
-
-namespace Cards.Core
+﻿namespace Cards.Core
 {
     public static class Luhn
     {
