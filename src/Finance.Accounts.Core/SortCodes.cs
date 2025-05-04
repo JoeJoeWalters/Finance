@@ -1,25 +1,42 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
 using Finance.Accounts.Core.Types;
 using System.Globalization;
 
 namespace Finance.Accounts.Core
 {
-    // https://www.sortcodes.co.uk/eiscd-data-file-documentation
-    // https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/in-memory-databases
     public class SortCodes
     {
+        private readonly Dictionary<string, SortCodeRecord> _sortCodes;
+
         public SortCodes(Stream EISCDFile) 
         {
+            _sortCodes = new Dictionary<string, SortCodeRecord>(); // Fallback
+
             using (StreamReader reader = new StreamReader(EISCDFile))
             {
+                // Set up the standard reader options to read tab delimited data
                 CsvReader csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
                 {
-                    Delimiter = "\t",
-                    HasHeaderRecord = true
+                    Delimiter = "\t", // Tab delimited
+                    HasHeaderRecord = true, // The first row contains the header
+                    TrimOptions = TrimOptions.Trim // Clean the data before trying to convert as there are trailing spaces                    
                 });
-                
-                var read = csv.GetRecords<SortCodeRecord>();
+
+                // Force date conversion types to be in a specific format
+                TypeConverterOptions options = new TypeConverterOptions
+                {
+                    Formats = new[] { "dd/MM/yyyy" }
+                };
+
+                // Apply the date conversion options to the DateTime and DateTime? types
+                csv.Context.TypeConverterOptionsCache.AddOptions<DateTime>(options);
+                csv.Context.TypeConverterOptionsCache.AddOptions<DateTime?>(options);
+
+                // Read the records and perform any necessary conversions
+                IEnumerable<SortCodeRecord> read = csv.GetRecords<SortCodeRecord>();
+                _sortCodes = read.ToList().GroupBy(x => x.GENERALSortingCode).ToDictionary(g => g.Key, g => g.FirstOrDefault());
             }
         }
     }

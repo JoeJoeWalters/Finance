@@ -14,10 +14,10 @@
         public string GENERALNationalCentralBankCountryCode { get; set; }
         public string GENERALSupervisoryBody { get; set; }
         public string GENERALDeletedDate { get; set; }
-        public string GENERALDateofLastChange { get; set; }
+        public DateTime? GENERALDateofLastChange { get; set; }
         public string GENERALPrintIndicator { get; set; }
         public string BACSStatus { get; set; }
-        public string BACSDateofLastChange { get; set; }
+        public DateTime? BACSDateofLastChange { get; set; }
         public string BACSDateClosedInBACSClearing { get; set; }
         public string BACSRedirectionFromFlag { get; set; }
         public string BACSRedirectToSortcode { get; set; }
@@ -41,14 +41,14 @@
         public string BACSSpare1 { get; set; }
         public string CHAPSSTERLINGReturnIndicator { get; set; }
         public string CHAPSSTERLINGStatus { get; set; }
-        public string CHAPSSTERLINGEffectiveDateOfLastChange { get; set; }
-        public string CHAPSSTERLINGDateClosed { get; set; }
+        public DateTime? CHAPSSTERLINGEffectiveDateOfLastChange { get; set; }
+        public DateTime? CHAPSSTERLINGDateClosed { get; set; }
         public string CHAPSSTERLINGSettlementMember { get; set; }
         public string CHAPSSTERLINGRoutingBICField1 { get; set; }
         public string CHAPSSTERLINGRoutingBICField2 { get; set; }
         public string CHAPSEUROStatus { get; set; }
-        public string CHAPSEUROEffectiveDateOfLastChange { get; set; }
-        public string CHAPSEURODateClosed { get; set; }
+        public DateTime? CHAPSEUROEffectiveDateOfLastChange { get; set; }
+        public DateTime? CHAPSEURODateClosed { get; set; }
         public string CHAPSEURORoutingBICField1 { get; set; }
         public string CHAPSEURORoutingBICField2 { get; set; }
         public string CHAPSEUROSettlementMember { get; set; }
@@ -56,15 +56,15 @@
         public string CHAPSEUROSwiftData { get; set; }
         public string CHAPSEUROSpare1 { get; set; }
         public string CCCCStatus { get; set; }
-        public string CCCCeffectiveDateofLastChange { get; set; }
+        public DateTime? CCCCeffectiveDateofLastChange { get; set; }
         public string CCCCDateClosed { get; set; }
         public string CCCCSettlementBank { get; set; }
         public string CCCCDebitAgencySortingCode { get; set; }
         public string CCCCReturnIndicator { get; set; }
         public string CCCCGBNIIndicator { get; set; }
         public string FASTStatus { get; set; }
-        public string FASTEffectiveDateofLastChange { get; set; }
-        public string FASTDateClosed { get; set; }
+        public DateTime? FASTEffectiveDateofLastChange { get; set; }
+        public DateTime? FASTDateClosed { get; set; }
         public string FASTRedirectFromFlag { get; set; }
         public string FASTRedirectToSortingCode { get; set; }
         public string FASTFPSSettlementBankConnectionType { get; set; }
