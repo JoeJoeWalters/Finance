@@ -39,5 +39,14 @@ namespace Finance.Accounts.Core
                 _sortCodes = read.ToList().GroupBy(x => x.GENERALSortingCode).ToDictionary(g => g.Key, g => g.FirstOrDefault());
             }
         }
+
+        public SortCodeRecord? Get(string sortCode)
+        {
+            if (_sortCodes.TryGetValue(sortCode, out SortCodeRecord? record))
+            {
+                return record;
+            }
+            return null;
+        }
     }
 }
