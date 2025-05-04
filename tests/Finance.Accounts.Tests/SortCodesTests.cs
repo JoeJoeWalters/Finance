@@ -30,6 +30,8 @@ namespace Finance.Accounts.Tests
 
         [Theory]
         [InlineData("090025", "ABBEY NAT TY INT LTD")]
+        [InlineData("609230", "BANK OF MONTREAL")]
+        [InlineData("200052", "BARCLAYS BANK PLC")]
         public void Given_ValidSortCode_GetRecord(string sortCode, string shortOwningBankName)
         {
             // ARRANGE
