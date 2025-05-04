@@ -43,5 +43,22 @@ namespace Finance.Accounts.Tests
             record.GENERALSortingCode.Should().Be(sortCode);
             record.GENERALShortNameOwningBank.Should().Be(shortOwningBankName);
         }
+
+        [Theory]
+        [InlineData("09-00-25", "090025", "ABBEY NAT TY INT LTD")]
+        [InlineData("09 00 25", "090025", "ABBEY NAT TY INT LTD")]
+        public void Given_SortCodeWithAlphas_GetRecord(string sortCode, string cleanSortCode, string shortOwningBankName)
+        {
+            // ARRANGE
+            SortCodeRecord? record;
+
+            // ACT
+            record = _sortCodes.Get(sortCode);
+
+            // ASSERT
+            record.Should().NotBeNull();
+            record.GENERALSortingCode.Should().Be(cleanSortCode);
+            record.GENERALShortNameOwningBank.Should().Be(shortOwningBankName);
+        }
     }
 }

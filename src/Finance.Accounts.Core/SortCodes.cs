@@ -42,11 +42,33 @@ namespace Finance.Accounts.Core
 
         public SortCodeRecord? Get(string sortCode)
         {
-            if (_sortCodes.TryGetValue(sortCode, out SortCodeRecord? record))
+            if (_sortCodes.TryGetValue(CleanSortCode(sortCode), out SortCodeRecord? record))
             {
                 return record;
             }
             return null;
+        }
+
+        private string CleanSortCode(string sortCode)
+        {
+            // Remove any spaces or dashes from the sort code
+            return GetNumbers(sortCode);
+        }
+
+        private string GetNumbers(String inputString)
+        {
+            String Result = "";
+            string Numbers = "0123456789";
+            int i = 0;
+
+            for (i = 0; i < inputString.Length; i++)
+            {
+                if (Numbers.Contains(inputString.ElementAt(i)))
+                {
+                    Result += inputString.ElementAt(i);
+                }
+            }
+            return Result;
         }
     }
 }
