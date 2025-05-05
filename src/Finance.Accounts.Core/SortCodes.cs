@@ -33,10 +33,11 @@ namespace Finance.Accounts.Core
                 // Apply the date conversion options to the DateTime and DateTime? types
                 csv.Context.TypeConverterOptionsCache.AddOptions<DateTime>(options);
                 csv.Context.TypeConverterOptionsCache.AddOptions<DateTime?>(options);
+                csv.Context.RegisterClassMap<SortCodeRecordMap>();
 
                 // Read the records and perform any necessary conversions
                 IEnumerable<SortCodeRecord> read = csv.GetRecords<SortCodeRecord>();
-                _sortCodes = read.ToList().GroupBy(x => x.GENERALSortingCode).ToDictionary(g => g.Key, g => g.FirstOrDefault());
+                _sortCodes = read.ToList().GroupBy(x => x.SortingCode).ToDictionary(g => g.Key, g => g.FirstOrDefault());
             }
         }
 

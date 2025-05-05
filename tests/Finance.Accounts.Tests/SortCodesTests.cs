@@ -42,8 +42,8 @@ namespace Finance.Accounts.Tests
 
             // ASSERT
             record.Should().NotBeNull();
-            record.GENERALSortingCode.Should().Be(sortCode);
-            record.GENERALShortNameOwningBank.Should().Be(shortOwningBankName);
+            record.SortingCode.Should().Be(sortCode);
+            record.ShortNameOwningBank.Should().Be(shortOwningBankName);
         }
 
         [Theory]
@@ -59,8 +59,8 @@ namespace Finance.Accounts.Tests
 
             // ASSERT
             record.Should().NotBeNull();
-            record.GENERALSortingCode.Should().Be(cleanSortCode);
-            record.GENERALShortNameOwningBank.Should().Be(shortOwningBankName);
+            record.SortingCode.Should().Be(cleanSortCode);
+            record.ShortNameOwningBank.Should().Be(shortOwningBankName);
         }
     }
 }
