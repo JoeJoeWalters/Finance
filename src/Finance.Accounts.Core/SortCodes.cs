@@ -58,18 +58,16 @@ namespace Finance.Accounts.Core
 
         private string GetNumbers(String inputString)
         {
-            String Result = "";
-            string Numbers = "0123456789";
+            String result = "";
+            string numbers = "0123456789";
             int i = 0;
 
             for (i = 0; i < inputString.Length; i++)
             {
-                if (Numbers.Contains(inputString.ElementAt(i)))
-                {
-                    Result += inputString.ElementAt(i);
-                }
+                if (numbers.Contains(inputString.ElementAt(i)))
+                    result += inputString.ElementAt(i);
             }
-            return Result;
+            return result;
         }
     }
 }
