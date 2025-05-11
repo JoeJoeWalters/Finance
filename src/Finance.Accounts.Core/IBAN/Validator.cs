@@ -4,32 +4,6 @@ namespace Finance.Accounts.Core.IBAN
 {
     public class Validator
     {
-        private static Dictionary<string, IBANStructure> _ibanStructures = new Dictionary<string, IBANStructure>
-        {
-            {
-                "GB", new IBANStructure
-                {
-                    CountryCode = "GB",
-                    County = "United Kingdom",
-                    Length = 22,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            {
-                "DE", new IBANStructure
-                {
-                    CountryCode = "DE",
-                    County = "Germany",
-                    Length = 22,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            }
-        };
-
         // Structure checking of the IBAN format
         public static bool IsValid(string iban)
         {
@@ -42,11 +16,11 @@ namespace Finance.Accounts.Core.IBAN
 
             // Check the country code and see the required length
             string countryCode = iban.Substring(0, 2);
-            if (!_ibanStructures.ContainsKey(countryCode))
+            if (!IBANStructure.Structures.ContainsKey(countryCode))
                 return false;
 
             // Country identidier says the IBAN length should be a given size
-            if (iban.Length != _ibanStructures[countryCode].Length)
+            if (iban.Length != IBANStructure.Structures[countryCode].Length)
                 return false;
 
             // Check the country code and see the required length
