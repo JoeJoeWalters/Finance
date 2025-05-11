@@ -60,7 +60,56 @@
                     AccountCheck = true,
                     Branch = true
                 }
-            }
+            },
+            { "NL", new IBANStructure
+                {
+                    CountryCode = "NL",
+                    County = "Netherlands",
+                    Length = 18,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "BE", new IBANStructure
+                {
+                    CountryCode = "BE",
+                    County = "Belgium",
+                    Length = 16,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "AT", new IBANStructure
+                {
+                    CountryCode = "AT",
+                    County = "Austria",
+                    Length = 20,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "PT", new IBANStructure
+                {
+                    CountryCode = "PT",
+                    County = "Portugal",
+                    Length = 25,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "CH", new IBANStructure
+                {
+                    CountryCode = "CH",
+                    County = "Switzerland",
+                    Length = 21,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
         };
     }
 }
