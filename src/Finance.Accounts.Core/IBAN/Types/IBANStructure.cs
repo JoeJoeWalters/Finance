@@ -110,6 +110,7 @@
                     AccountCheck = true,
                     Branch = true
                 }
+            }
         };
     }
 }
