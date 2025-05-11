@@ -19,13 +19,13 @@ namespace Finance.Accounts.Core.IBAN
             if (!IBANStructure.Structures.ContainsKey(countryCode))
                 return false;
 
-            // Country identidier says the IBAN length should be a given size
+            // Country identifier says the IBAN length should be a given size
             if (iban.Length != IBANStructure.Structures[countryCode].Length)
                 return false;
 
-            // Check the country code and see the required length
+            // Check the check digits and see they are numeric
             string checkDigits = iban.Substring(2, 2);
-            if (!int.Parse(checkDigits).ToString().Equals(iban.Substring(2, 2)))
+            if (!int.Parse(checkDigits).ToString().Equals(checkDigits))
                 return false;
 
             return Mod97(iban);
