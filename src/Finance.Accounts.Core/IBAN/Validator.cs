@@ -34,7 +34,8 @@ namespace Finance.Accounts.Core.IBAN
 
             // Check the check digits and see they are numeric
             string checkDigits = iban.Substring(2, 2);
-            if (!int.Parse(checkDigits).ToString().Equals(checkDigits))
+            int.TryParse(checkDigits, out int checkDigitValue);
+            if (!checkDigitValue.ToString().Equals(checkDigits))
                 return false;
 
             return true;

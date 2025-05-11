@@ -30,7 +30,7 @@ namespace Finance.Accounts.Tests
         //[InlineData("GB24BARC20201630093459")] // Bank code not found and invalid account
         //[InlineData("GB12BARC20201530093A59")] // Invalid account structure
         //[InlineData("GB78BARCO0201530093459")] // Bank code not found and invalid bank code structure
-        //[InlineData("GB2LABBY09012857201707")] // Invalid IBAN checksum and IBAN structure
+        [InlineData("GB2LABBY09012857201707")] // Invalid IBAN checksum and IBAN structure
         [InlineData("GB01BARC20714583608387")] // Invalid IBAN checksum
         [InlineData("GB00HLFX11016111455365")] // Invalid IBAN checksum
         [InlineData("US64SVBKUS6S3300958879")] // Country does not seem to support IBAN!
