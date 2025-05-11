@@ -48,6 +48,7 @@
             string prefix = convertedPrefixes[random.Next(0, convertedPrefixes.Length)];
             string cardNumber = prefix;
             int totalLength = random.Next(sizeRange.Start.Value, sizeRange.End.Value);
+
             int generationLength = totalLength - (luhnRequired ? prefix.Length + 1 : prefix.Length);
             for (int i = 0; i < generationLength; i++)
             {

@@ -33,8 +33,6 @@ namespace Finance.Cards.Core
         /// <returns>A random card number as a string.</returns>
         public static string CardNumber(CardType cardType)
         {
-            Random random = new Random();
-            
             if (!CardIdentity.Features.ContainsKey(cardType))
                 throw new ArgumentException($"Unsupported card type: {cardType}");
 
