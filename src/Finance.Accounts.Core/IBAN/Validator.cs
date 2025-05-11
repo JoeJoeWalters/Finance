@@ -1,4 +1,5 @@
 ﻿using Finance.Accounts.Core.IBAN.Types;
+using System.Data;
 
 namespace Finance.Accounts.Core.IBAN
 {
@@ -10,6 +11,14 @@ namespace Finance.Accounts.Core.IBAN
             // Remove spaces and convert to uppercase
             iban = iban.Replace(" ", "").ToUpper();
 
+            if (!StructureCheck(iban))
+                return false;
+
+            return Mod97(iban);
+        }
+
+        private static bool StructureCheck(string iban)
+        {
             // Check length
             if (iban.Length < 15 || iban.Length > 34)
                 return false;
@@ -28,7 +37,7 @@ namespace Finance.Accounts.Core.IBAN
             if (!int.Parse(checkDigits).ToString().Equals(checkDigits))
                 return false;
 
-            return Mod97(iban);
+            return true;
         }
 
         private static bool Mod97(string iban)
