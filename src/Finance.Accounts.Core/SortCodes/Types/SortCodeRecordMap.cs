@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration;
 
-namespace Finance.Accounts.Core.Types
+namespace Finance.Accounts.Core.SortCodes.Types
 {
     internal class SortCodeRecordMap : ClassMap<SortCodeRecord>
     {

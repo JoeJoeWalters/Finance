@@ -1,10 +1,10 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
-using Finance.Accounts.Core.Types;
+using Finance.Accounts.Core.SortCodes.Types;
 using System.Globalization;
 
-namespace Finance.Accounts.Core
+namespace Finance.Accounts.Core.SortCodes
 {
     public class SortCodes
     {
@@ -52,20 +52,14 @@ namespace Finance.Accounts.Core
 
         private string CleanSortCode(string sortCode)
         {
-            // Remove any spaces or dashes from the sort code
-            return GetNumbers(sortCode);
-        }
-
-        private string GetNumbers(String inputString)
-        {
-            String result = "";
+            string result = "";
             string numbers = "0123456789";
             int i = 0;
 
-            for (i = 0; i < inputString.Length; i++)
+            for (i = 0; i < sortCode.Length; i++)
             {
-                if (numbers.Contains(inputString.ElementAt(i)))
-                    result += inputString.ElementAt(i);
+                if (numbers.Contains(sortCode.ElementAt(i)))
+                    result += sortCode.ElementAt(i);
             }
             return result;
         }

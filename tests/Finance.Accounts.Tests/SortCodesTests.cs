@@ -1,5 +1,5 @@
-using Finance.Accounts.Core;
-using Finance.Accounts.Core.Types;
+using Finance.Accounts.Core.SortCodes;
+using Finance.Accounts.Core.SortCodes.Types;
 using FluentAssertions;
 
 namespace Finance.Accounts.Tests

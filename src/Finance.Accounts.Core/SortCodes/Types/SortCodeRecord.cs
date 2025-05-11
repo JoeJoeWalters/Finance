@@ -1,4 +1,4 @@
-﻿namespace Finance.Accounts.Core.Types
+﻿namespace Finance.Accounts.Core.SortCodes.Types
 {
     public class SortCodeRecord
     {
