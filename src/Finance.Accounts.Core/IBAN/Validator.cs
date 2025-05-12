@@ -35,8 +35,16 @@ namespace Finance.Accounts.Core.IBAN
             // Check the check digits and see they are numeric
             string checkDigits = iban.Substring(2, 2);
             int.TryParse(checkDigits, out int checkDigitValue);
-            if (!checkDigitValue.ToString().Equals(checkDigits))
+            string paddedDigits = checkDigitValue.ToString().PadLeft(2, '0');
+            if (!paddedDigits.Equals(checkDigits))
                 return false;
+
+            // Make sure the remaining characters are numeric
+            string checkAccount = iban.Substring(4, iban.Length - 4);
+            int.TryParse(checkDigits, out int checkAccountValue);
+            if (!checkAccountValue.ToString().Equals(checkAccount))
+                return false;
+
 
             return true;
         }

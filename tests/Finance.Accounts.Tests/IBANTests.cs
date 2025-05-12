@@ -25,10 +25,11 @@ namespace Finance.Accounts.Tests
         [Theory]
         [InlineData("GB94BARC20201530093459")] // Invalid IBAN check digits MOD-97-10 as per ISO/IEC 7064:2003
         [InlineData("GB96BARC202015300934591")] // Invalid IBAN length must be "X" characters long!
-        //[InlineData("GB02BARC20201530093451")] // Invalid account number
+        [InlineData("GB02BARC20201530093451")] // Invalid account number
         //[InlineData("GB68CITI18500483515538")] // Invalid account number
         //[InlineData("GB24BARC20201630093459")] // Bank code not found and invalid account
-        //[InlineData("GB12BARC20201530093A59")] // Invalid account structure
+        [InlineData("GB02BARC20201530093A59")] // Check Digirs resolve to single digit integer
+        [InlineData("GB12BARC20201530093A59")] // Invalid account structure
         //[InlineData("GB78BARCO0201530093459")] // Bank code not found and invalid bank code structure
         [InlineData("GB2LABBY09012857201707")] // Invalid IBAN checksum and IBAN structure
         [InlineData("GB01BARC20714583608387")] // Invalid IBAN checksum
