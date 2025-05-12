@@ -1,4 +1,4 @@
-﻿namespace Finance.Accounts.Core.SortCodes.Types
+﻿namespace Finance.Core.SortCodes.Types
 {
     public class CCCCRecord
     {

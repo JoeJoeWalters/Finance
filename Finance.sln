@@ -7,18 +7,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{04E10726-B169-4E56-92B1-65E6E4392EC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Cards.Tests", "tests\Finance.Cards.Tests\Finance.Cards.Tests.csproj", "{9CC8E5AC-D4B6-C792-BA03-B039695637F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Cards.Core", "src\Finance.Cards.Core\Finance.Cards.Core.csproj", "{9A9174FC-6709-42B9-B32A-98EB0842541D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Accounts.Core", "src\Finance.Accounts.Core\Finance.Accounts.Core.csproj", "{C7F0647B-48F3-497D-96B5-E13D17E7173D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Core", "src\Finance.Accounts.Core\Finance.Core.csproj", "{C7F0647B-48F3-497D-96B5-E13D17E7173D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Accounts.Tests", "tests\Finance.Accounts.Tests\Finance.Accounts.Tests.csproj", "{232BF13F-B74A-4622-8326-842C1CB8F512}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Tests", "tests\Finance.Accounts.Tests\Finance.Tests.csproj", "{232BF13F-B74A-4622-8326-842C1CB8F512}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9CC8E5AC-D4B6-C792-BA03-B039695637F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9CC8E5AC-D4B6-C792-BA03-B039695637F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9CC8E5AC-D4B6-C792-BA03-B039695637F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9CC8E5AC-D4B6-C792-BA03-B039695637F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A9174FC-6709-42B9-B32A-98EB0842541D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A9174FC-6709-42B9-B32A-98EB0842541D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A9174FC-6709-42B9-B32A-98EB0842541D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A9174FC-6709-42B9-B32A-98EB0842541D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C7F0647B-48F3-497D-96B5-E13D17E7173D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C7F0647B-48F3-497D-96B5-E13D17E7173D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7F0647B-48F3-497D-96B5-E13D17E7173D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,8 +35,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9CC8E5AC-D4B6-C792-BA03-B039695637F6} = {04E10726-B169-4E56-92B1-65E6E4392EC9}
-		{9A9174FC-6709-42B9-B32A-98EB0842541D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{C7F0647B-48F3-497D-96B5-E13D17E7173D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{232BF13F-B74A-4622-8326-842C1CB8F512} = {04E10726-B169-4E56-92B1-65E6E4392EC9}
 	EndGlobalSection

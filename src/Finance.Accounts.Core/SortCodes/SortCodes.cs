@@ -1,10 +1,11 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
-using Finance.Accounts.Core.SortCodes.Types;
+using Finance.Core.SortCodes.Types;
+using Finance.Core.Common;
 using System.Globalization;
 
-namespace Finance.Accounts.Core.SortCodes
+namespace Finance.Core.SortCodes
 {
     public class SortCodes
     {
@@ -43,25 +44,11 @@ namespace Finance.Accounts.Core.SortCodes
 
         public SortCodeRecord? Get(string sortCode)
         {
-            if (_sortCodes.TryGetValue(CleanSortCode(sortCode), out SortCodeRecord? record))
+            if (_sortCodes.TryGetValue(sortCode.NumericsOnly(), out SortCodeRecord? record))
             {
                 return record;
             }
             return null;
-        }
-
-        private string CleanSortCode(string sortCode)
-        {
-            string result = "";
-            string numbers = "0123456789";
-            int i = 0;
-
-            for (i = 0; i < sortCode.Length; i++)
-            {
-                if (numbers.Contains(sortCode.ElementAt(i)))
-                    result += sortCode.ElementAt(i);
-            }
-            return result;
         }
     }
 }

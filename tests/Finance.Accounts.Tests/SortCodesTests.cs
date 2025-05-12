@@ -1,8 +1,8 @@
-using Finance.Accounts.Core.SortCodes;
-using Finance.Accounts.Core.SortCodes.Types;
+using Finance.Core.SortCodes;
+using Finance.Core.SortCodes.Types;
 using FluentAssertions;
 
-namespace Finance.Accounts.Tests
+namespace Finance.Tests
 {
     public class SortCodesTests
     {

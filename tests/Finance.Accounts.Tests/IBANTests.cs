@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
-using Finance.Accounts.Core.IBAN;
+﻿using Finance.Core.IBAN;
+using FluentAssertions;
 
-namespace Finance.Accounts.Tests
+namespace Finance.Tests
 {
     public class IBANTests
     {

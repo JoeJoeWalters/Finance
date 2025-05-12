@@ -1,7 +1,7 @@
-﻿using Finance.Accounts.Core.IBAN.Types;
-using System.Data;
+﻿using Finance.Core.Common;
+using Finance.Core.IBAN.Types;
 
-namespace Finance.Accounts.Core.IBAN
+namespace Finance.Core.IBAN
 {
     public class Validator
     {
@@ -40,11 +40,9 @@ namespace Finance.Accounts.Core.IBAN
                 return false;
 
             // Make sure the remaining characters are numeric
-            string checkAccount = iban.Substring(4, iban.Length - 4);
-            int.TryParse(checkDigits, out int checkAccountValue);
-            if (!checkAccountValue.ToString().Equals(checkAccount))
+            string checkAccount = iban.Substring(8, iban.Length - 8);
+            if (checkAccount.NumericsOnly() != checkAccount)
                 return false;
-
 
             return true;
         }

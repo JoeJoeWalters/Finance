@@ -1,4 +1,4 @@
-﻿namespace Finance.Accounts.Core.IBAN.Types
+﻿namespace Finance.Core.IBAN.Types
 {
     public class IBANStructure
     {
