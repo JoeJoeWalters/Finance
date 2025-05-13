@@ -31,7 +31,11 @@ namespace Finance.Core.IBAN
                 return false;
 
             // Get the iban structure from the dictionary
-            IBANStructure structure = IBANStructure.Structures[countryCode];
+            IBANStructure.Structures.TryGetValue(countryCode, out IBANStructure? structure);
+            if (structure == null)
+                return false;
+
+            // Check the length of the IBAN against the structure
             if (iban.Length != structure.Length)
                 return false;
 
