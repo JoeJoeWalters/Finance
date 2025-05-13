@@ -30,8 +30,9 @@ namespace Finance.Core.IBAN
             if (!IBANStructure.Structures.ContainsKey(countryCode))
                 return false;
 
-            // Country identifier says the IBAN length should be a given size
-            if (iban.Length != IBANStructure.Structures[countryCode].Length)
+            // Get the iban structure from the dictionary
+            IBANStructure structure = IBANStructure.Structures[countryCode];
+            if (iban.Length != structure.Length)
                 return false;
 
             // Get the bank code and see if it is valid
@@ -51,6 +52,13 @@ namespace Finance.Core.IBAN
             string checkAccount = iban.Substring(8, iban.Length - 8);
             if (checkAccount.NumericsOnly() != checkAccount)
                 return false;
+
+#warning TODO: Check the account structure
+            if (structure.AccountCheck)
+            {
+                // Not in scope for now but if we ever need to lookup the account number to see if it is real
+                // likely we can use the Sort Code checker if needed
+            }
 
             return true;
         }
