@@ -11,9 +11,11 @@ namespace Finance.Core.IBAN
             // Remove spaces and convert to uppercase
             iban = iban.Replace(" ", "").ToUpper();
 
+            // Ensure there is a checksum, valid bank code and valid structure
             if (!StructureCheck(iban))
                 return false;
 
+            // Ensure the check digits are valid
             return Mod97(iban);
         }
 
