@@ -32,6 +32,12 @@ namespace Finance.Core.IBAN
             if (iban.Length != IBANStructure.Structures[countryCode].Length)
                 return false;
 
+            // Get the bank code and see if it is valid
+            string bankCode = iban.Substring(4, 4);
+            IBANBankCode bank = IBANBankCode.BankCodes.FirstOrDefault(x => x.Key.Equals(bankCode) && x.Value.CountryCode == countryCode).Value;
+            if (bank == null)
+                return false;
+
             // Check the check digits and see they are numeric
             string checkDigits = iban.Substring(2, 2);
             int.TryParse(checkDigits, out int checkDigitValue);
