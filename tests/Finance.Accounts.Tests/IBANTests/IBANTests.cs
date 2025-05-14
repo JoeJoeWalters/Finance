@@ -1,13 +1,14 @@
 ﻿using Finance.Core.IBAN;
 using FluentAssertions;
 
-namespace Finance.Tests
+namespace Finance.Tests.IBANTests
 {
     public class IBANTests
     {
         // https://www.iban.com/testibans
+        // https://iban.co.uk/examples.html
         [Theory]
-        [InlineData("GB33BUKB20201555555555")] // Valid IBAN, length, checksum, bank code, account and structure
+        [InlineData("GB91BKEN10000041610008")] // Valid IBAN, length, checksum, bank code, account and structure
         public void Given_IBAN_IsValid(string iban)
         {
             // ARRANGE
@@ -43,6 +44,24 @@ namespace Finance.Tests
 
             // ASSERT
             result.Should().BeFalse();
+        }
+
+        [Theory]
+        [InlineData("GB", "BUKB", "20201555555555", "GB33BUKB20201555555555")]
+        public void Given_Components_Should_GenerateIBAN(
+            string countryCode, 
+            string bankCode,
+            string accountNumber,
+            string expectedIBAN)
+        {
+            // ARRANGE
+
+            // ACT
+            string iban = Generator.GenerateIBAN(countryCode, bankCode, accountNumber);
+
+            // ASSERT
+            iban.Should().NotBeNullOrEmpty();
+            iban.Should().Be("GB33BUKB20201555555555");
         }
     }
 }

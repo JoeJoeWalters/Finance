@@ -3,7 +3,7 @@ using Finance.Core.IBAN.Types;
 
 namespace Finance.Core.IBAN
 {
-    public class Validator
+    public static class Validator
     {
         // Structure checking of the IBAN format
         public static bool IsValid(string iban)
@@ -39,7 +39,7 @@ namespace Finance.Core.IBAN
             if (iban.Length != structure.Length)
                 return false;
 
-            // Get the bank code and see if it is valid
+            // Get the bank code and see if it is valid (country code also has to match the bank code location)
             string bankCode = iban.Substring(4, 4);
             IBANBankCode bank = IBANBankCode.BankCodes.FirstOrDefault(x => x.Key.Equals(bankCode) && x.Value.CountryCode == countryCode).Value;
             if (bank == null)

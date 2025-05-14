@@ -2,7 +2,7 @@ using Finance.Core.Cards;
 using Finance.Core.Types;
 using FluentAssertions;
 
-namespace Finance.Tests
+namespace Finance.Tests.SortCodeTests
 {
     public class IdentificationTests
     {

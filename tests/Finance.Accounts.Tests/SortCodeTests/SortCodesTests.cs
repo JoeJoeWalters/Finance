@@ -2,7 +2,7 @@ using Finance.Core.SortCodes;
 using Finance.Core.SortCodes.Types;
 using FluentAssertions;
 
-namespace Finance.Tests
+namespace Finance.Tests.SortCodeTests
 {
     public class SortCodesTests
     {

@@ -16,6 +16,14 @@ namespace Finance.Core.IBAN.Types
         // https://bank.codes/iban/bank/
         public static Dictionary<string, IBANBankCode> BankCodes = new Dictionary<string, IBANBankCode>
         {
+            { "BKEN", new IBANBankCode
+                {
+                    SWIFTorBIC = "BKEN",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "13"
+                }
+            },
             { "BUKB", new IBANBankCode
                 {
                     SWIFTorBIC = "BUKB",
