@@ -38,13 +38,24 @@
             }
 
             // Perform MOD-97 operation
-            for (int i = 0; i < numericIban.Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                
+                // Get the next two digits
+                string part = numericIban.Substring(0, Math.Min(9, numericIban.Length));
+                numericIban = numericIban.Substring(part.Length);
+                // Convert to uint and perform MOD-97
+                current = (current * 100 + uint.Parse(part)) % 97;
             }
 
+            /*
+            for (int i = 0; i < numericIban.Length; i++)
+            {
+                                
+            }
+            */
+
             // Return the check digits as a two-digit string
-            return 0.ToString("D2");
+            return current.ToString("D2");
         }
     }
 }
