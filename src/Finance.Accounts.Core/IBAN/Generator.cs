@@ -1,4 +1,6 @@
-﻿namespace Finance.Core.IBAN
+﻿using System.Numerics;
+
+namespace Finance.Core.IBAN
 {
     public static class Generator
     {
@@ -24,7 +26,7 @@
             // Move the first four characters to the end of the string
             string rearrangedIban = ibanSansDigits.Substring(4) + ibanSansDigits.Substring(0, 4);
 
-            uint current = 0;
+            BigInteger current = 0;
             int length = rearrangedIban.Length;
 
             // Replace letters with numbers (A=10, B=11, ..., Z=35)
@@ -38,21 +40,8 @@
             }
 
             // Perform MOD-97 operation
-            for (int i = 0; i < length; i++)
-            {
-                // Get the next two digits
-                string part = numericIban.Substring(0, Math.Min(9, numericIban.Length));
-                numericIban = numericIban.Substring(part.Length);
-                // Convert to uint and perform MOD-97
-                current = (current * 100 + uint.Parse(part)) % 97;
-            }
+            current = 98 - (BigInteger.Parse(numericIban) % 97);
 
-            /*
-            for (int i = 0; i < numericIban.Length; i++)
-            {
-                                
-            }
-            */
 
             // Return the check digits as a two-digit string
             return current.ToString("D2");

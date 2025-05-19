@@ -47,6 +47,7 @@ namespace Finance.Tests.IBANTests
         }
 
         [Theory]
+        [InlineData("GB", "MIDL", "40051512345674", "GB26MIDL40051512345674")]
         [InlineData("GB", "BUKB", "20201555555555", "GB33BUKB20201555555555")]
         public void Given_Components_Should_GenerateIBAN(
             string countryCode, 
@@ -61,7 +62,7 @@ namespace Finance.Tests.IBANTests
 
             // ASSERT
             iban.Should().NotBeNullOrEmpty();
-            iban.Should().Be("GB33BUKB20201555555555");
+            iban.Should().Be(expectedIBAN);
         }
     }
 }
