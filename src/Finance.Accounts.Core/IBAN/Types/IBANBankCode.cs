@@ -40,12 +40,36 @@ namespace Finance.Core.IBAN.Types
                     CheckSum = "49"
                 }
             },
+            { "CLYD", new IBANBankCode
+                {
+                    SWIFTorBIC = "CLYD",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "15"
+                }
+            },
             { "BOFI", new IBANBankCode
                 {
                     SWIFTorBIC = "BOFI",
                     Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "77"
+                }
+            },
+            { "BOFS", new IBANBankCode
+                {
+                    SWIFTorBIC = "BOFS",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "29"
+                }
+            },
+            { "MIDL", new IBANBankCode
+                {
+                    SWIFTorBIC = "MIDL",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "26"
                 }
             },
             { "HBUK", new IBANBankCode
@@ -78,6 +102,14 @@ namespace Finance.Core.IBAN.Types
                     Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "29"
+                }
+            },
+            { "BARC", new IBANBankCode
+                {
+                    SWIFTorBIC = "BARC",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "92"
                 }
             }
         };

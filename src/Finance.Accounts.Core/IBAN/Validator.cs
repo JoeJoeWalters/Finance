@@ -1,5 +1,6 @@
 ﻿using Finance.Core.Common;
 using Finance.Core.IBAN.Types;
+using System.Numerics;
 
 namespace Finance.Core.IBAN
 {
@@ -52,16 +53,32 @@ namespace Finance.Core.IBAN
             if (!paddedDigits.Equals(checkDigits))
                 return false;
 
-            // Make sure the remaining characters are numeric
-            string checkAccount = iban.Substring(8, iban.Length - 8);
-            if (checkAccount.NumericsOnly() != checkAccount)
-                return false;
-
-#warning TODO: Check the account structure
             if (structure.AccountCheck)
             {
-                // Not in scope for now but if we ever need to lookup the account number to see if it is real
-                // likely we can use the Sort Code checker if needed
+                // TODO: Check based on the structure for that bank in the format field
+                switch (bank.CountryCode)
+                {
+                    case "GB":
+
+                        string sortCode = iban.Substring(8, 6);
+                        if (sortCode.NumericsOnly() != sortCode)
+                            return false;
+
+                        string accountNumber = iban.Substring(14, iban.Length - 14);
+                        if (accountNumber.NumericsOnly() != accountNumber)
+                            return false;
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                // Make sure the remaining characters are numeric
+                string checkAccount = iban.Substring(8, iban.Length - 8);
+                if (checkAccount.NumericsOnly() != checkAccount)
+                    return false;
             }
 
             return true;
@@ -83,11 +100,8 @@ namespace Finance.Core.IBAN
             }
 
             // Perform MOD-97 operation
-            long remainder = 0;
-            for (int i = 0; i < numericIban.Length; i++)
-            {
-                remainder = (remainder * 10 + (numericIban[i] - '0')) % 97;
-            }
+            BigInteger remainder = 0;
+            remainder = BigInteger.Parse(numericIban) % 97;
 
             return remainder == 1;
         }
