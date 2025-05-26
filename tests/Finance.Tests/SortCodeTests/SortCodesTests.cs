@@ -10,7 +10,8 @@ namespace Finance.Tests.SortCodeTests
 
         public SortCodesTests()
         {
-            FileStream fileStream = new FileStream("./Data/EISCD.txt", FileMode.Open, FileAccess.Read);
+            string filePath = Path.Combine(AppContext.BaseDirectory, "Data", "EISCD.txt");
+            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
             _sortCodes = new SortCodes(fileStream);
         }
 
