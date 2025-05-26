@@ -1,5 +1,5 @@
 ﻿using Finance.Core.IBAN;
-using FluentAssertions;
+using AwesomeAssertions;
 
 namespace Finance.Tests.IBANTests
 {

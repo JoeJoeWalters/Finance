@@ -1,6 +1,6 @@
 using Finance.Core.Cards;
 using Finance.Core.Types;
-using FluentAssertions;
+using AwesomeAssertions;
 
 namespace Finance.Tests.SortCodeTests
 {
