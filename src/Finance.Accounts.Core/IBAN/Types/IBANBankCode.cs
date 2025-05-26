@@ -8,10 +8,10 @@ namespace Finance.Core.IBAN.Types
 {
     public class IBANBankCode
     {
-        public string SWIFTorBIC { get; set; }
-        public string Format { get; set; }
-        public string CountryCode { get; set; }
-        public string CheckSum { get; set; }
+        public required string SWIFTorBIC { get; set; }
+        public required string Format { get; set; }
+        public required string CountryCode { get; set; }
+        public required string CheckSum { get; set; }
 
         // https://bank.codes/iban/bank/
         public static Dictionary<string, IBANBankCode> BankCodes = new Dictionary<string, IBANBankCode>

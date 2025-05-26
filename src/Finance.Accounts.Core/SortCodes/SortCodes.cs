@@ -38,7 +38,7 @@ namespace Finance.Core.SortCodes
 
                 // Read the records and perform any necessary conversions
                 IEnumerable<SortCodeRecord> read = csv.GetRecords<SortCodeRecord>();
-                _sortCodes = read.ToList().GroupBy(x => x.SortingCode).ToDictionary(g => g.Key, g => g.FirstOrDefault());
+                _sortCodes = read.ToList().GroupBy(x => x.SortingCode).ToDictionary(g => g.Key, g => g.First());
             }
         }
 

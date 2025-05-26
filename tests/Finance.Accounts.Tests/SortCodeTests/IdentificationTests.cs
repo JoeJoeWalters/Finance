@@ -41,17 +41,16 @@ namespace Finance.Tests.SortCodeTests
         public void Given_PanOfWrongLength_Should_ThrowArgumentException(string pan, CardType expectedResult)
         {
             // ARRANGE
-            CardType result = CardType.Unknown;
 
             // ACT
-            Action comparison = () => { var result = Identification.WhatIs(pan); };
+            Action comparison = () => { CardType result = Identification.WhatIs(pan); };
 
             // ASSERT
             comparison
                     .Should()
                         .Throw<ArgumentException>().WithMessage("Invalid card number length for the identified card type.")
                     .And
-                        .InnerException.Message.Should().Be($"Length for card type '{expectedResult}' is incorrect.");
+                        .InnerException?.Message.Should().Be($"Length for card type '{expectedResult}' is incorrect.");
         }
 
         /*
@@ -84,7 +83,7 @@ namespace Finance.Tests.SortCodeTests
             BINRange binRange = new BINRange(cardType.ToString(), new Range[] { testRange });
 
             // ACT
-            BINRange result = Identification.InRange(new BINRange[] { binRange }, pan);
+            BINRange? result = Identification.InRange(new BINRange[] { binRange }, pan);
 
             // ASSERT
             result.Should().BeEquivalentTo(binRange);

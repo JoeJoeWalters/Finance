@@ -2,16 +2,16 @@
 {
     public class IBANStructure
     {
-        public string CountryCode { get; set; }
-        public string County { get; set; }
-        public int Length { get; set; }
-        public bool SEPA { get; set; }
-        public bool AccountCheck { get; set; }
-        public bool Branch { get; set; }
+        public required string CountryCode { get; set; }
+        public required string County { get; set; }
+        public required int Length { get; set; }
+        public required bool SEPA { get; set; }
+        public required bool AccountCheck { get; set; }
+        public required bool Branch { get; set; }
 
         public static Dictionary<string, IBANStructure> Structures = new Dictionary<string, IBANStructure>
         {
-                    { "AT", new IBANStructure
+            { "AT", new IBANStructure
                 {
                     CountryCode = "AT",
                     County = "Austria",

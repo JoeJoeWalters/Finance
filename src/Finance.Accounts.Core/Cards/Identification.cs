@@ -41,8 +41,7 @@ namespace Finance.Core.Cards
             throw new ArgumentException("Invalid card number length for the identified card type.", new Exception($"Length for card type '{result}' is incorrect."));
         }
 
-
-        public static BINRange InRange(BINRange[] ranges, string pan)
+        public static BINRange? InRange(BINRange[] ranges, string pan)
         {
             if (string.IsNullOrEmpty(pan) || pan.Length < 13 || pan.Length > 19)
                 return null;
