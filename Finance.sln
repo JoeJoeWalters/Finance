@@ -16,6 +16,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Core", "src\Finance
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.Tests", "tests\Finance.Tests\Finance.Tests.csproj", "{232BF13F-B74A-4622-8326-842C1CB8F512}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C1D9471D-AF50-4DE0-8FF1-754722A257AD}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{111CCA63-2703-4658-85EB-8FFD89676166}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +47,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C7F0647B-48F3-497D-96B5-E13D17E7173D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{232BF13F-B74A-4622-8326-842C1CB8F512} = {04E10726-B169-4E56-92B1-65E6E4392EC9}
+		{111CCA63-2703-4658-85EB-8FFD89676166} = {C1D9471D-AF50-4DE0-8FF1-754722A257AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {657A5275-3A5D-4D67-B31B-CD580FCED975}
