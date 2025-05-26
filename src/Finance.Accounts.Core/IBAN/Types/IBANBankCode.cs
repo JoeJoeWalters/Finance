@@ -16,12 +16,45 @@ namespace Finance.Core.IBAN.Types
         // https://bank.codes/iban/bank/
         public static Dictionary<string, IBANBankCode> BankCodes = new Dictionary<string, IBANBankCode>
         {
+             // GB Banks
+             { "ABBY", new IBANBankCode
+                {
+                    SWIFTorBIC = "ABBY",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "15"
+                }
+            },
+            { "BARC", new IBANBankCode
+                {
+                    SWIFTorBIC = "BARC",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "92"
+                }
+            },
             { "BKEN", new IBANBankCode
                 {
                     SWIFTorBIC = "BKEN",
                     Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "13"
+                }
+            },
+            { "BOFI", new IBANBankCode
+                {
+                    SWIFTorBIC = "BOFI",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "77"
+                }
+            },
+            { "BOFS", new IBANBankCode
+                {
+                    SWIFTorBIC = "BOFS",
+                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
+                    CountryCode = "GB",
+                    CheckSum = "29"
                 }
             },
             { "BUKB", new IBANBankCode
@@ -48,30 +81,6 @@ namespace Finance.Core.IBAN.Types
                     CheckSum = "15"
                 }
             },
-            { "BOFI", new IBANBankCode
-                {
-                    SWIFTorBIC = "BOFI",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
-                    CountryCode = "GB",
-                    CheckSum = "77"
-                }
-            },
-            { "BOFS", new IBANBankCode
-                {
-                    SWIFTorBIC = "BOFS",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
-                    CountryCode = "GB",
-                    CheckSum = "29"
-                }
-            },
-            { "MIDL", new IBANBankCode
-                {
-                    SWIFTorBIC = "MIDL",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
-                    CountryCode = "GB",
-                    CheckSum = "26"
-                }
-            },
             { "HBUK", new IBANBankCode
                 {
                     SWIFTorBIC = "HBUK",
@@ -88,12 +97,12 @@ namespace Finance.Core.IBAN.Types
                     CheckSum = "54"
                 }
             },
-            { "ABBY", new IBANBankCode
+            { "MIDL", new IBANBankCode
                 {
-                    SWIFTorBIC = "ABBY",
+                    SWIFTorBIC = "MIDL",
                     Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
-                    CheckSum = "15"
+                    CheckSum = "26"
                 }
             },
             { "NWBK", new IBANBankCode
@@ -102,14 +111,6 @@ namespace Finance.Core.IBAN.Types
                     Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "29"
-                }
-            },
-            { "BARC", new IBANBankCode
-                {
-                    SWIFTorBIC = "BARC",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
-                    CountryCode = "GB",
-                    CheckSum = "92"
                 }
             }
         };

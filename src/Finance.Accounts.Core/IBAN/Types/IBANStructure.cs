@@ -11,61 +11,11 @@
 
         public static Dictionary<string, IBANStructure> Structures = new Dictionary<string, IBANStructure>
         {
-            { "GB", new IBANStructure
+                    { "AT", new IBANStructure
                 {
-                    CountryCode = "GB",
-                    County = "United Kingdom",
-                    Length = 22,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "DE", new IBANStructure
-                {
-                    CountryCode = "DE",
-                    County = "Germany",
-                    Length = 22,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "FR", new IBANStructure
-                {
-                    CountryCode = "FR",
-                    County = "France",
-                    Length = 27,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "IT", new IBANStructure
-                {
-                    CountryCode = "IT",
-                    County = "Italy",
-                    Length = 27,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "ES", new IBANStructure
-                {
-                    CountryCode = "ES",
-                    County = "Spain",
-                    Length = 24,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "NL", new IBANStructure
-                {
-                    CountryCode = "NL",
-                    County = "Netherlands",
-                    Length = 18,
+                    CountryCode = "AT",
+                    County = "Austria",
+                    Length = 20,
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true
@@ -81,31 +31,41 @@
                     Branch = true
                 }
             },
-            { "AT", new IBANStructure
-                {
-                    CountryCode = "AT",
-                    County = "Austria",
-                    Length = 20,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "PT", new IBANStructure
-                {
-                    CountryCode = "PT",
-                    County = "Portugal",
-                    Length = 25,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
             { "CH", new IBANStructure
                 {
                     CountryCode = "CH",
                     County = "Switzerland",
                     Length = 21,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "CY", new IBANStructure
+                {
+                    CountryCode = "CY",
+                    County = "Cyprus",
+                    Length = 28,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "CZ", new IBANStructure
+                {
+                    CountryCode = "CZ",
+                    County = "Czech Republic",
+                    Length = 24,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "DE", new IBANStructure
+                {
+                    CountryCode = "DE",
+                    County = "Germany",
+                    Length = 22,
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true
@@ -121,11 +81,21 @@
                     Branch = true
                 }
             },
-            { "NO", new IBANStructure
+            { "EE", new IBANStructure
                 {
-                    CountryCode = "NO",
-                    County = "Norway",
-                    Length = 15,
+                    CountryCode = "EE",
+                    County = "Estonia",
+                    Length = 20,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "ES", new IBANStructure
+                {
+                    CountryCode = "ES",
+                    County = "Spain",
+                    Length = 24,
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true
@@ -141,20 +111,20 @@
                     Branch = true
                 }
             },
-            { "SE", new IBANStructure
+            { "FR", new IBANStructure
                 {
-                    CountryCode = "SE",
-                    County = "Sweden",
-                    Length = 24,
+                    CountryCode = "FR",
+                    County = "France",
+                    Length = 27,
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true
                 }
             },
-            { "IE", new IBANStructure
+            { "GB", new IBANStructure
                 {
-                    CountryCode = "IE",
-                    County = "Ireland",
+                    CountryCode = "GB",
+                    County = "United Kingdom",
                     Length = 22,
                     SEPA = true,
                     AccountCheck = true,
@@ -171,46 +141,6 @@
                     Branch = true
                 }
             },
-            { "CY", new IBANStructure
-                {
-                    CountryCode = "CY",
-                    County = "Cyprus",
-                    Length = 28,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "SK", new IBANStructure
-                {
-                    CountryCode = "SK",
-                    County = "Slovakia",
-                    Length = 24,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "SI", new IBANStructure
-                {
-                    CountryCode = "SI",
-                    County = "Slovenia",
-                    Length = 19,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
-            { "CZ", new IBANStructure
-                {
-                    CountryCode = "CZ",
-                    County = "Czech Republic",
-                    Length = 24,
-                    SEPA = true,
-                    AccountCheck = true,
-                    Branch = true
-                }
-            },
             { "HU", new IBANStructure
                 {
                     CountryCode = "HU",
@@ -221,11 +151,21 @@
                     Branch = true
                 }
             },
-            { "PL", new IBANStructure
+            { "IE", new IBANStructure
                 {
-                    CountryCode = "PL",
-                    County = "Poland",
-                    Length = 28,
+                    CountryCode = "IE",
+                    County = "Ireland",
+                    Length = 22,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "IT", new IBANStructure
+                {
+                    CountryCode = "IT",
+                    County = "Italy",
+                    Length = 27,
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true
@@ -251,11 +191,71 @@
                     Branch = true
                 }
             },
-            { "EE", new IBANStructure
+            { "NL", new IBANStructure
                 {
-                    CountryCode = "EE",
-                    County = "Estonia",
-                    Length = 20,
+                    CountryCode = "NL",
+                    County = "Netherlands",
+                    Length = 18,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "NO", new IBANStructure
+                {
+                    CountryCode = "NO",
+                    County = "Norway",
+                    Length = 15,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "PL", new IBANStructure
+                {
+                    CountryCode = "PL",
+                    County = "Poland",
+                    Length = 28,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "PT", new IBANStructure
+                {
+                    CountryCode = "PT",
+                    County = "Portugal",
+                    Length = 25,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "SE", new IBANStructure
+                {
+                    CountryCode = "SE",
+                    County = "Sweden",
+                    Length = 24,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "SI", new IBANStructure
+                {
+                    CountryCode = "SI",
+                    County = "Slovenia",
+                    Length = 19,
+                    SEPA = true,
+                    AccountCheck = true,
+                    Branch = true
+                }
+            },
+            { "SK", new IBANStructure
+                {
+                    CountryCode = "SK",
+                    County = "Slovakia",
+                    Length = 24,
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true
