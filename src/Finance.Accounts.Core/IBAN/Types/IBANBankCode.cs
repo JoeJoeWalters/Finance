@@ -12,10 +12,9 @@ namespace Finance.Core.IBAN.Types
         public required string CountryCode { get; set; }
         public required string CheckSum { get; set; }
 
-        // https://bank.codes/iban/bank/
         public static Dictionary<string, IBANBankCode> BankCodes = new Dictionary<string, IBANBankCode>
         {
-             // GB Banks
+             // GB Banks - https://bank.codes/iban/bank/
              { "ABBY", new IBANBankCode
                 {
                     SWIFTorBIC = "ABBY",
@@ -101,15 +100,14 @@ namespace Finance.Core.IBAN.Types
                 }
             },
 
-            // DE - https://wise.com/gb/iban/germany/postbank
+            // DE Banks - https://wise.com/gb/iban/germany/postbank
             { "37040044", new IBANBankCode
                 {
-                    SWIFTorBIC = "37040044",
+                    SWIFTorBIC = "37040044", // PostBank
                     CountryCode = "DE",
                     CheckSum = "89"
                 }
-            },
-
+            }
         };
     }
 }
