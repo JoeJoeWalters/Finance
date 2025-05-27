@@ -8,6 +8,7 @@
         public required bool SEPA { get; set; }
         public required bool AccountCheck { get; set; }
         public required bool Branch { get; set; }
+        public required string Format { get; set; }
 
         public static Dictionary<string, IBANStructure> Structures = new Dictionary<string, IBANStructure>
         {
@@ -18,7 +19,8 @@
                     Length = 20,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "BE", new IBANStructure
@@ -28,7 +30,8 @@
                     Length = 16,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "CH", new IBANStructure
@@ -38,7 +41,8 @@
                     Length = 21,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "CY", new IBANStructure
@@ -48,7 +52,8 @@
                     Length = 28,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "CZ", new IBANStructure
@@ -58,7 +63,8 @@
                     Length = 24,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "DE", new IBANStructure
@@ -68,7 +74,8 @@
                     Length = 22,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = "CCDDBBBBBBBBAAAAAAAAAA"
                 }
             },
             { "DK", new IBANStructure
@@ -78,7 +85,8 @@
                     Length = 18,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "EE", new IBANStructure
@@ -88,7 +96,8 @@
                     Length = 20,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "ES", new IBANStructure
@@ -98,7 +107,8 @@
                     Length = 24,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "FI", new IBANStructure
@@ -108,7 +118,8 @@
                     Length = 18,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "FR", new IBANStructure
@@ -118,7 +129,8 @@
                     Length = 27,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "GB", new IBANStructure
@@ -128,7 +140,8 @@
                     Length = 22,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = "CCDDBBBBSSSSSSAAAAAAAA"
                 }
             },
             { "GR", new IBANStructure
@@ -138,7 +151,8 @@
                     Length = 27,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "HU", new IBANStructure
@@ -148,7 +162,8 @@
                     Length = 28,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "IE", new IBANStructure
@@ -158,7 +173,8 @@
                     Length = 22,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "IT", new IBANStructure
@@ -168,7 +184,8 @@
                     Length = 27,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "LT", new IBANStructure
@@ -178,7 +195,8 @@
                     Length = 20,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "LV", new IBANStructure
@@ -188,7 +206,8 @@
                     Length = 21,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "NL", new IBANStructure
@@ -198,7 +217,8 @@
                     Length = 18,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "NO", new IBANStructure
@@ -208,7 +228,8 @@
                     Length = 15,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "PL", new IBANStructure
@@ -218,7 +239,8 @@
                     Length = 28,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "PT", new IBANStructure
@@ -228,7 +250,8 @@
                     Length = 25,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "SE", new IBANStructure
@@ -238,7 +261,8 @@
                     Length = 24,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "SI", new IBANStructure
@@ -248,7 +272,8 @@
                     Length = 19,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
             { "SK", new IBANStructure
@@ -258,7 +283,8 @@
                     Length = 24,
                     SEPA = true,
                     AccountCheck = true,
-                    Branch = true
+                    Branch = true,
+                    Format = ""
                 }
             },
         };

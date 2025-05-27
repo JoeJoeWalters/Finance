@@ -15,5 +15,14 @@
             }
             return result;
         }
+
+        public static Range RangeOf(this string value, char character)
+        {
+            return new Range
+            (
+                value.IndexOf(character) + 1,
+                value.LastIndexOf(character)
+            );
+        }
     }
 }

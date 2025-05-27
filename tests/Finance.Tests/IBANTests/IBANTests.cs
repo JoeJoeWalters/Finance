@@ -16,6 +16,7 @@ namespace Finance.Tests.IBANTests
         [InlineData("GB92BARC20005275849855")]
         [InlineData("GB66CITI18500812098709")]
         [InlineData("GB15CLYD82663220400952")]
+        [InlineData("DE89370400440532013000")]
         public void Given_IBAN_IsValid(string iban)
         {
             // ARRANGE

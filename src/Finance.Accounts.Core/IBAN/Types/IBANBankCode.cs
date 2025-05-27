@@ -9,7 +9,6 @@ namespace Finance.Core.IBAN.Types
     public class IBANBankCode
     {
         public required string SWIFTorBIC { get; set; }
-        public required string Format { get; set; }
         public required string CountryCode { get; set; }
         public required string CheckSum { get; set; }
 
@@ -20,7 +19,6 @@ namespace Finance.Core.IBAN.Types
              { "ABBY", new IBANBankCode
                 {
                     SWIFTorBIC = "ABBY",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "15"
                 }
@@ -28,7 +26,6 @@ namespace Finance.Core.IBAN.Types
             { "BARC", new IBANBankCode
                 {
                     SWIFTorBIC = "BARC",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "92"
                 }
@@ -36,7 +33,6 @@ namespace Finance.Core.IBAN.Types
             { "BKEN", new IBANBankCode
                 {
                     SWIFTorBIC = "BKEN",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "13"
                 }
@@ -44,7 +40,6 @@ namespace Finance.Core.IBAN.Types
             { "BOFI", new IBANBankCode
                 {
                     SWIFTorBIC = "BOFI",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "77"
                 }
@@ -52,7 +47,6 @@ namespace Finance.Core.IBAN.Types
             { "BOFS", new IBANBankCode
                 {
                     SWIFTorBIC = "BOFS",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "29"
                 }
@@ -60,7 +54,6 @@ namespace Finance.Core.IBAN.Types
             { "BUKB", new IBANBankCode
                 {
                     SWIFTorBIC = "BUKB",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "13"
                 }
@@ -68,7 +61,6 @@ namespace Finance.Core.IBAN.Types
             { "CITI", new IBANBankCode
                 {
                     SWIFTorBIC = "CITI",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "49"
                 }
@@ -76,7 +68,6 @@ namespace Finance.Core.IBAN.Types
             { "CLYD", new IBANBankCode
                 {
                     SWIFTorBIC = "CLYD",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "15"
                 }
@@ -84,7 +75,6 @@ namespace Finance.Core.IBAN.Types
             { "HBUK", new IBANBankCode
                 {
                     SWIFTorBIC = "HBUK",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "54"
                 }
@@ -92,7 +82,6 @@ namespace Finance.Core.IBAN.Types
             { "LOYD", new IBANBankCode
                 {
                     SWIFTorBIC = "LOYD",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "54"
                 }
@@ -100,7 +89,6 @@ namespace Finance.Core.IBAN.Types
             { "MIDL", new IBANBankCode
                 {
                     SWIFTorBIC = "MIDL",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "26"
                 }
@@ -108,11 +96,20 @@ namespace Finance.Core.IBAN.Types
             { "NWBK", new IBANBankCode
                 {
                     SWIFTorBIC = "NWBK",
-                    Format= "CCDDBBBBSSSSSSAAAAAAAA",
                     CountryCode = "GB",
                     CheckSum = "29"
                 }
-            }
+            },
+
+            // DE - https://wise.com/gb/iban/germany/postbank
+            { "37040044", new IBANBankCode
+                {
+                    SWIFTorBIC = "37040044",
+                    CountryCode = "DE",
+                    CheckSum = "89"
+                }
+            },
+
         };
     }
 }
