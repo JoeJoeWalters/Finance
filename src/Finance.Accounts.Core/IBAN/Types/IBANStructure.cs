@@ -141,7 +141,7 @@
                     SEPA = true,
                     AccountCheck = true,
                     Branch = true,
-                    Format = "CCDDBBBBSSSSSSAAAAAAAA"
+                    Format = "CCDDBBBBAAAAAAAAAAAAAA"
                 }
             },
             { "GR", new IBANStructure

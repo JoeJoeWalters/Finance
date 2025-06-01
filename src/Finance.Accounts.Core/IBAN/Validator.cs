@@ -59,16 +59,24 @@ namespace Finance.Core.IBAN
 
             if (structure.AccountCheck)
             {
+                string accountSection = iban.ValueInRangeOf(structure.Format, 'A');
+
                 // TODO: Check based on the structure for that bank in the format field
                 switch (bank.CountryCode)
                 {
                     case "GB":
 
-                        string sortCode = iban.Substring(8, 6);
+                        // Sort code and account number must be 14 characters long
+                        if (accountSection.Length != 14)
+                            return false;
+
+                        // Sort code is the first 6 characters, must be numeric
+                        string sortCode = accountSection.Substring(0, 6);
                         if (sortCode.NumericsOnly() != sortCode)
                             return false;
 
-                        string accountNumber = iban.Substring(14, iban.Length - 14);
+                        // Account number is the remaining characters, must be numeric
+                        string accountNumber = accountSection.Substring(6, accountSection.Length - 6);
                         if (accountNumber.NumericsOnly() != accountNumber)
                             return false;
 
