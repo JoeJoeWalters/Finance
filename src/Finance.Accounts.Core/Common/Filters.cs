@@ -24,5 +24,11 @@
                 value.LastIndexOf(character)
             );
         }
+
+        public static string ValueInRangeOf(this string value, string format, char character)
+        {
+            Range range = format.RangeOf(character);
+            return value.Substring(range.Start.Value - 1, (range.End.Value + 1) - (range.Start.Value - 1));
+        }
     }
 }

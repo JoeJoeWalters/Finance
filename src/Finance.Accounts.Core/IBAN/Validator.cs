@@ -45,8 +45,7 @@ namespace Finance.Core.IBAN
                 throw new NotSupportedException($"IBAN format for country {countryCode} is not supported in this library.");
 
             // Get the bank code and see if it is valid (country code also has to match the bank code location)
-            Range bankCodeRange = structure.Format.RangeOf('B');
-            string bankCode = iban.Substring(bankCodeRange.Start.Value - 1, (bankCodeRange.End.Value + 1) - (bankCodeRange.Start.Value - 1));
+            string bankCode = iban.ValueInRangeOf(structure.Format, 'B');
             IBANBankCode bank = IBANBankCode.BankCodes.FirstOrDefault(x => x.Key.Equals(bankCode) && x.Value.CountryCode == countryCode).Value;
             if (bank == null)
                 return false;
