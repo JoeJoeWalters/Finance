@@ -25,6 +25,7 @@ namespace Finance.Tests.SortCodeTests
             card = new Card(pan);
 
             // ASSERT
+            card.Pan.Should().Be(pan); // Ensure setter is correct
             card.CardType.Should().Be(expectedResult);
             card.LuhnCheck.Should().Be(luhnPass);
         }
@@ -39,7 +40,7 @@ namespace Finance.Tests.SortCodeTests
         [InlineData(CardType.JCB, true)] // JCB (16 Digits)
         [InlineData(CardType.Maestro, true)] // Maestro (16 Digits)
         [InlineData(CardType.ChinaUnionPay, false)] // China Union Pay (16 to 19 Digits)
-        public void Given_Pan_IsType_When_RequestingTestCardOnConstructor(CardType cardType, bool luhnCheck)
+        public void Given_CardContructorOfType_IsType_When_RequestingTestCardOnConstructor(CardType cardType, bool luhnCheck)
         {
             // ARRANGE
 

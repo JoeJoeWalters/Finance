@@ -8,7 +8,7 @@ namespace Finance.Core.Cards
         /// The Primary Account Number (PAN) of the card.
         /// </summary>
         internal readonly string _pan;
-        public string Pan => _pan;
+        public string Pan { get { return _pan; } }
 
         /// <summary>
         /// Gets the card type based on the PAN (Primary Account Number).

@@ -88,5 +88,18 @@ namespace Finance.Tests.SortCodeTests
             // ASSERT
             result.Should().BeEquivalentTo(binRange);
         }
+
+        [Fact]
+        public void Given_PanOfWrongLength_Should_ReturnUnknownCard()
+        {
+            // ARRANGE
+            string pan = "123456789012"; // 12 digits, which is too short
+
+            // ACT
+            CardType result = Identification.WhatIs(pan);
+            
+            // ASSERT
+            result.Should().Be(CardType.Unknown);
+        }
     }
 }

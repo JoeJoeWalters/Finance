@@ -72,6 +72,7 @@ namespace Finance.Tests.IBANTests
 
         [Theory]
         [InlineData("US")]
+        [InlineData("XX")]
         public void Given_CountryCode_ShouldNot_Return_Validator(string countryCode)
         {
             // ACT
