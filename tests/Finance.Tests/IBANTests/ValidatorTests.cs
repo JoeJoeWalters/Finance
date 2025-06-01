@@ -1,9 +1,13 @@
-﻿using Finance.Core.IBAN;
-using AwesomeAssertions;
+﻿using AwesomeAssertions;
+using Finance.Core.Cards;
+using Finance.Core.IBAN;
+using Finance.Core.IBAN.AccountValidators;
+using Finance.Core.Types;
+using System;
 
 namespace Finance.Tests.IBANTests
 {
-    public class IBANTests
+    public class ValidatorTests
     {
         // https://www.iban.com/testibans
         // https://iban.co.uk/examples.html
@@ -51,30 +55,31 @@ namespace Finance.Tests.IBANTests
             result.Should().BeFalse();
         }
 
-        // https://iban.co.uk/examples.html
         [Theory]
-        [InlineData("GB", "MIDL", "40051512345674", "GB26MIDL40051512345674")]
-        [InlineData("GB", "BUKB", "20201555555555", "GB33BUKB20201555555555")]
-        [InlineData("GB", "BKEN", "10000041610008", "GB91BKEN10000041610008")]
-        [InlineData("GB", "BOFI", "90212729823529", "GB27BOFI90212729823529")]
-        [InlineData("GB", "BOFS", "80055100813796", "GB17BOFS80055100813796")]
-        [InlineData("GB", "BARC", "20005275849855", "GB92BARC20005275849855")]
-        [InlineData("GB", "CITI", "18500812098709", "GB66CITI18500812098709")]
-        [InlineData("GB", "CLYD", "82663220400952", "GB15CLYD82663220400952")]
-        public void Given_Components_Should_GenerateIBAN(
-            string countryCode, 
-            string bankCode,
-            string accountNumber,
-            string expectedIBAN)
+        [InlineData("GB")]
+        [InlineData("DE")]
+        public void Given_CountryCode_Should_Return_Validator(string countryCode)
         {
             // ARRANGE
+            IAccountValidator validator;
 
             // ACT
-            string iban = Generator.GenerateIBAN(countryCode, bankCode, accountNumber);
+            validator = AccountValidatorFactory.GetValidator(countryCode);
 
             // ASSERT
-            iban.Should().NotBeNullOrEmpty();
-            iban.Should().Be(expectedIBAN);
+            validator.Should().NotBeNull();
+        }
+
+        [Theory]
+        [InlineData("US")]
+        public void Given_CountryCode_ShouldNot_Return_Validator(string countryCode)
+        {
+            // ACT
+            Action comparison = () => { IAccountValidator result = AccountValidatorFactory.GetValidator(countryCode); };
+
+            // ASSERT
+            comparison.Should().Throw<NotSupportedException>().WithMessage($"No account validator found for country code: {countryCode}");
+
         }
     }
 }
