@@ -21,6 +21,7 @@ namespace Finance.Tests.IBANTests
         [InlineData("GB66CITI18500812098709")]
         [InlineData("GB15CLYD82663220400952")]
         [InlineData("DE89370400440532013000")]
+        [InlineData("AL47212110090000000235698741")] // No Account validation for this country (Used for default checks)
         public void Given_IBAN_IsValid(string iban)
         {
             // ARRANGE

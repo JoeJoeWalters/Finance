@@ -12,6 +12,28 @@
 
         public static Dictionary<string, IBANStructure> Structures = new Dictionary<string, IBANStructure>
         {
+            { "AL", new IBANStructure
+                {
+                    CountryCode = "AL",
+                    County = "Albania",
+                    Length = 28,
+                    SEPA = true,
+                    AccountCheck = false,
+                    Branch = true,
+                    Format = "CCDDBBBAAAAAAAAAAAAAAAAAAAAA"
+                }
+            },
+            { "AD", new IBANStructure
+                {
+                    CountryCode = "AD",
+                    County = "Andorra",
+                    Length = 24,
+                    SEPA = true,
+                    AccountCheck = false,
+                    Branch = true,
+                    Format = "CCDDBBBBBBBBAAAAAAAAAAAA"
+                }
+            },
             { "AT", new IBANStructure
                 {
                     CountryCode = "AT",
