@@ -2,7 +2,7 @@
 
 namespace Finance.Core.Cards
 {
-    public static class Generator
+    public static class CardGenerator
     {
         public static string[] GenerateRanges(string[] range)
         {

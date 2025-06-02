@@ -24,7 +24,7 @@ namespace Finance.Tests.IBANTests
             // ARRANGE
 
             // ACT
-            string iban = Generator.GenerateIBAN(countryCode, bankCode, accountNumber);
+            string iban = IBANGenerator.GenerateIBAN(countryCode, bankCode, accountNumber);
 
             // ASSERT
             iban.Should().NotBeNullOrEmpty();
@@ -43,7 +43,7 @@ namespace Finance.Tests.IBANTests
             // ARRANGE
 
             // ACT
-            Action comparison = () => { string iban = Generator.GenerateIBAN(countryCode, bankCode, accountNumber); };
+            Action comparison = () => { string iban = IBANGenerator.GenerateIBAN(countryCode, bankCode, accountNumber); };
 
             // ASSERT
             comparison.Should().Throw<ArgumentException>().WithMessage("Country code, bank code, and account number must be provided.");

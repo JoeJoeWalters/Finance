@@ -1,8 +1,8 @@
-﻿using Finance.Core.Cards;
+﻿using AwesomeAssertions;
+using Finance.Core.Cards;
 using Finance.Core.Types;
-using AwesomeAssertions;
 
-namespace Finance.Tests.SortCodeTests
+namespace Finance.Tests.CardTests
 {
     public class CardObjectTests
     {

@@ -27,7 +27,7 @@ namespace Finance.Tests.IBANTests
             bool result = false;
 
             // ACT
-            result = Validator.IsValid(iban);
+            result = IBANValidator.IsValid(iban);
 
             // ASSERT
             result.Should().BeTrue();
@@ -51,7 +51,7 @@ namespace Finance.Tests.IBANTests
             bool result = false;
 
             // ACT
-            result = Validator.IsValid(iban);
+            result = IBANValidator.IsValid(iban);
 
             // ASSERT
             result.Should().BeFalse();

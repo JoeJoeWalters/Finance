@@ -2,7 +2,7 @@ using Finance.Core.SortCodes;
 using Finance.Core.SortCodes.Types;
 using AwesomeAssertions;
 
-namespace Finance.Tests.SortCodeTests
+namespace Finance.Tests.CardTests
 {
     public class SortCodesTests
     {

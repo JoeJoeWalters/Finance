@@ -42,7 +42,7 @@
         public static string GenerateCard(string[] prefixes, Range sizeRange, bool luhnRequired)
         {
             // Generate a random number of the specified length - 1 (to give space for the check digit)
-            string[] convertedPrefixes = Generator.GenerateRanges(prefixes);
+            string[] convertedPrefixes = CardGenerator.GenerateRanges(prefixes);
             Random random = new Random();
             bool alternate = false;
             string prefix = convertedPrefixes[random.Next(0, convertedPrefixes.Length)];

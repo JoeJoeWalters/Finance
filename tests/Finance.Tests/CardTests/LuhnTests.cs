@@ -1,8 +1,8 @@
+using AwesomeAssertions;
 using Finance.Core.Cards;
 using Finance.Core.Types;
-using AwesomeAssertions;
 
-namespace Finance.Tests.SortCodeTests
+namespace Finance.Tests.CardTests
 {
     public class LuhnTests
     {
@@ -57,7 +57,7 @@ namespace Finance.Tests.SortCodeTests
             // ACT
 
             // ASSERT
-            Identification.WhatIs(cardNumber).Should().Be(CardType.Visa);
+            CardValidator.WhatIs(cardNumber).Should().Be(CardType.Visa);
             Luhn.IsValid(cardNumber).Should().BeTrue();
         }
     }

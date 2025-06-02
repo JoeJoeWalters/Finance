@@ -1,12 +1,10 @@
+using AwesomeAssertions;
 using Finance.Core.Cards;
 using Finance.Core.Types;
-using AwesomeAssertions;
-using Microsoft.VisualBasic;
-using System;
 
-namespace Finance.Tests.SortCodeTests
+namespace Finance.Tests.CardTests
 {
-    public class IdentificationTests
+    public class CardValidatorTests
     {
         [Theory]
         [InlineData("142854256672067", CardType.UATP)] // UATP (15 Digits)
@@ -23,7 +21,7 @@ namespace Finance.Tests.SortCodeTests
             CardType result = CardType.Unknown;
 
             // ACT
-            result = Identification.WhatIs(pan);
+            result = CardValidator.WhatIs(pan);
 
             // ASSERT
             result.Should().Be(expectedResult);
@@ -45,7 +43,7 @@ namespace Finance.Tests.SortCodeTests
             // ARRANGE
 
             // ACT
-            Action comparison = () => { CardType result = Identification.WhatIs(pan); };
+            Action comparison = () => { CardType result = CardValidator.WhatIs(pan); };
 
             // ASSERT
             comparison
@@ -70,7 +68,7 @@ namespace Finance.Tests.SortCodeTests
             CardType result = CardType.Unknown;
 
             // ACT
-            result = Identification.WhatIs(pan);
+            result = CardValidator.WhatIs(pan);
 
             // ASSERT
             result.Should().Be(CardType.Unknown);
@@ -86,7 +84,7 @@ namespace Finance.Tests.SortCodeTests
             BINRange binRange = new BINRange(cardType.ToString(), new Range[] { testRange });
 
             // ACT
-            BINRange? result = Identification.InRange(new BINRange[] { binRange }, pan);
+            BINRange? result = CardValidator.InRange(new BINRange[] { binRange }, pan);
 
             // ASSERT
             result.Should().BeEquivalentTo(binRange);
@@ -104,7 +102,7 @@ namespace Finance.Tests.SortCodeTests
             BINRange binRange = new BINRange(cardType.ToString(), new Range[] { testRange });
 
             // ACT
-            BINRange? result = Identification.InRange(new BINRange[] { binRange }, pan);
+            BINRange? result = CardValidator.InRange(new BINRange[] { binRange }, pan);
 
             // ASSERT
             result.Should().BeNull();

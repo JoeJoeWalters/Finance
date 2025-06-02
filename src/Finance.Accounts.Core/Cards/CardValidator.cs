@@ -2,7 +2,7 @@
 
 namespace Finance.Core.Cards
 {
-    public static class Identification
+    public static class CardValidator
     {
         /// <summary>
         /// Checks the type of card based on the PAN (Primary Account Number).

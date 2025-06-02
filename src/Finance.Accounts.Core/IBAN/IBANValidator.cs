@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace Finance.Core.IBAN
 {
-    public static class Validator
+    public static class IBANValidator
     {
         // Structure checking of the IBAN format
         public static bool IsValid(string iban)

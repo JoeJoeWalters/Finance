@@ -13,7 +13,7 @@ namespace Finance.Core.Cards
         /// <summary>
         /// Gets the card type based on the PAN (Primary Account Number).
         /// </summary>
-        public CardType CardType => Identification.WhatIs(_pan);
+        public CardType CardType => CardValidator.WhatIs(_pan);
 
         /// <summary>
         /// Checks if the PAN is valid using the Luhn algorithm.
@@ -31,7 +31,7 @@ namespace Finance.Core.Cards
 
         public Card(CardType cardType)
         {
-            _pan = Generator.CardNumber(cardType);
+            _pan = CardGenerator.CardNumber(cardType);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Finance.Core.Types
         public static string[] MIIRange(CardType cardType)
         {
             if (!_generatedMIIRanges.ContainsKey(cardType))
-                _generatedMIIRanges[cardType] = Generator.GenerateRanges(Features[cardType].CardMIIRanges);
+                _generatedMIIRanges[cardType] = CardGenerator.GenerateRanges(Features[cardType].CardMIIRanges);
 
             return _generatedMIIRanges[cardType];
         }

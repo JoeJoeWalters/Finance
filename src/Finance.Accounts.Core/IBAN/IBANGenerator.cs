@@ -2,7 +2,7 @@
 
 namespace Finance.Core.IBAN
 {
-    public static class Generator
+    public static class IBANGenerator
     {
         // https://iban.co.uk/generation.html
         public static string GenerateIBAN(string countryCode, string bankCode, string accountNumber)
