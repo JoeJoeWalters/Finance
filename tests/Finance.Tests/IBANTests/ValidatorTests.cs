@@ -114,5 +114,21 @@ namespace Finance.Tests.IBANTests
             // ASSERT
             result.Should().BeFalse();
         }
+
+        [Theory]
+        [InlineData("GB", "BARC", "202015300934XX")]
+        [InlineData("DE", "8937040044", "05320130XX")]
+        public void Given_Validator_Should_ThrowNotNumeric(string countryCode, string bankCode, string accountSection)
+        {
+            // ARRANGE
+            IAccountValidator validator;
+
+            // ACT
+            validator = AccountValidatorFactory.GetValidator(countryCode);
+            bool result = validator.Validate(accountSection, bankCode, accountSection);
+
+            // ASSERT
+            result.Should().BeFalse();
+        }
     }
 }
