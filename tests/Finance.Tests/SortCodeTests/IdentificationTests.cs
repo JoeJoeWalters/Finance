@@ -1,6 +1,8 @@
 using Finance.Core.Cards;
 using Finance.Core.Types;
 using AwesomeAssertions;
+using Microsoft.VisualBasic;
+using System;
 
 namespace Finance.Tests.SortCodeTests
 {
@@ -88,6 +90,24 @@ namespace Finance.Tests.SortCodeTests
 
             // ASSERT
             result.Should().BeEquivalentTo(binRange);
+        }
+
+        [Theory]
+        [InlineData("", CardType.Visa, 0, 0)] // Empty Check = null
+        [InlineData("111", CardType.Visa, 0, 0)] // Too short check
+        [InlineData("111111111111111111111", CardType.Visa, 0, 0)] // Too long check
+        [InlineData("2223000048400011", CardType.MasterCard, 23, 24)] // Range not found
+        public void Given_BINRangeAndPan_Then_NotInRange(string pan, CardType cardType, int rangeFrom, int rangeTo)
+        {
+            // ARRANGE
+            Range testRange = new Range(rangeFrom, rangeTo);
+            BINRange binRange = new BINRange(cardType.ToString(), new Range[] { testRange });
+
+            // ACT
+            BINRange? result = Identification.InRange(new BINRange[] { binRange }, pan);
+
+            // ASSERT
+            result.Should().BeNull();
         }
     }
 }
