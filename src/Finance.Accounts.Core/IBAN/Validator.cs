@@ -29,12 +29,8 @@ namespace Finance.Core.IBAN
 
             // Check the country code and see the required length
             string countryCode = iban.Substring(0, 2);
-            if (!IBANStructure.Structures.ContainsKey(countryCode))
-                return false;
-
-            // Get the iban structure from the dictionary
-            IBANStructure.Structures.TryGetValue(countryCode, out IBANStructure? structure);
-            if (structure == null)
+            var structureResult = IBANStructure.Structures.TryGetValue(countryCode, out IBANStructure? structure);
+            if (!structureResult || structure == null)
                 return false;
 
             // Check the length of the IBAN against the structure
