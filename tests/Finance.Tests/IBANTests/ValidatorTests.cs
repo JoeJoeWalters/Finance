@@ -43,6 +43,8 @@ namespace Finance.Tests.IBANTests
         [InlineData("GB2LABBY09012857201707")] // Invalid IBAN checksum and IBAN structure
         [InlineData("GB00HLFX11016111455365")] // Invalid IBAN checksum
         [InlineData("US64SVBKUS6S3300958879")] // Country does not seem to support IBAN!
+        [InlineData("XX111")] // Too Short
+        [InlineData("XX111111111111111111111111111111111")] // Too Long
         public void Given_IBAN_IsInvalid(string iban)
         {
             // ARRANGE
