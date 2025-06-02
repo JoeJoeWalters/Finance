@@ -82,5 +82,37 @@ namespace Finance.Tests.IBANTests
             comparison.Should().Throw<NotSupportedException>().WithMessage($"No account validator found for country code: {countryCode}");
 
         }
+
+        [Theory]
+        [InlineData("GB", "BARC", "20201530093459")]
+        [InlineData("DE", "8937040044", "0532013000")]
+        public void Given_Validator_Should_ValidateLength(string countryCode, string bankCode, string accountSection)
+        {
+            // ARRANGE
+            IAccountValidator validator;
+
+            // ACT
+            validator = AccountValidatorFactory.GetValidator(countryCode);
+            bool result = validator.Validate(accountSection, bankCode, accountSection);
+
+            // ASSERT
+            result.Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData("GB", "BARC", "2020530093459")]
+        [InlineData("DE", "8937040044", "053013000")]
+        public void Given_Validator_Should_ThowInvalidateLength(string countryCode, string bankCode, string accountSection)
+        {
+            // ARRANGE
+            IAccountValidator validator;
+
+            // ACT
+            validator = AccountValidatorFactory.GetValidator(countryCode);
+            bool result = validator.Validate(accountSection, bankCode, accountSection);
+
+            // ASSERT
+            result.Should().BeFalse();
+        }
     }
 }

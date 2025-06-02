@@ -61,6 +61,7 @@ namespace Finance.Tests.SortCodeTests
         [InlineData("300000000000000")] // Fake American Express
         [InlineData("6000000000000000")] // Fake Discover
         [InlineData("3000000000000")] // Fake Diners Club
+        [InlineData("30000000")] // Less than 13 characters
         public void Given_Pan_IsUnknown(string pan)
         {
             // ARRANGE
