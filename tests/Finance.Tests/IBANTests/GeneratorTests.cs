@@ -30,5 +30,24 @@ namespace Finance.Tests.IBANTests
             iban.Should().NotBeNullOrEmpty();
             iban.Should().Be(expectedIBAN);
         }
+
+        [Theory]
+        [InlineData("", "MIDL", "40051512345674")]
+        [InlineData("GB", "", "40051512345674")]
+        [InlineData("GB", "MIDL", "")]
+        public void Given_Components_Should_FailWithArgumenException(
+            string countryCode,
+            string bankCode,
+            string accountNumber)
+        {
+            // ARRANGE
+
+            // ACT
+            Action comparison = () => { string iban = Generator.GenerateIBAN(countryCode, bankCode, accountNumber); };
+
+            // ASSERT
+            comparison.Should().Throw<ArgumentException>().WithMessage("Country code, bank code, and account number must be provided.");
+
+        }
     }
 }
