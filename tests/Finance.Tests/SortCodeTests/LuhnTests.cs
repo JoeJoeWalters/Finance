@@ -26,6 +26,7 @@ namespace Finance.Tests.SortCodeTests
         }
 
         [Theory]
+        [InlineData(null)] // Null check
         [InlineData("142854256672067")] // UATP (15 Digits)
         [InlineData("5428542566720671")] // Mastercard (16 Digits)
         [InlineData("4698467663093871")] // Visa (16 Digits)
