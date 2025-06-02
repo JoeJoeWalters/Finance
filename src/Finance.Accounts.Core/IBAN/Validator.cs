@@ -37,10 +37,6 @@ namespace Finance.Core.IBAN
             if (iban.Length != structure.Length)
                 return false;
 
-            // No format defined then this country is not supported in this library
-            if (structure.Format == "")
-                throw new NotSupportedException($"IBAN format for country {countryCode} is not supported in this library.");
-
             // Get the bank code and see if it is valid (country code also has to match the bank code location)
             string bankCode = iban.ValueInRangeOf(structure.Format, 'B');
             IBANBankCode bank = IBANBankCode.BankCodes.FirstOrDefault(x => x.Key.Equals(bankCode) && x.Value.CountryCode == countryCode).Value;
