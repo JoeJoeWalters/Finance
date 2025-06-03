@@ -15,6 +15,7 @@
         DinersClub = 36,
         ChinaUnionPay = 62,
         Discover = 65,
-        Maestro = 67
+        Maestro = 67,
+        Unsupported = 99 // Used for unsupported cards
     }
 }

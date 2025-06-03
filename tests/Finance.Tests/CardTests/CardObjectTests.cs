@@ -1,6 +1,9 @@
 ﻿using AwesomeAssertions;
 using Finance.Core.Cards;
+using Finance.Core.IBAN;
 using Finance.Core.Types;
+using Microsoft.VisualBasic;
+using System;
 
 namespace Finance.Tests.CardTests
 {
@@ -51,6 +54,19 @@ namespace Finance.Tests.CardTests
             card.CardType.Should().Be(cardType);
             if (luhnCheck)
                 card.LuhnCheck.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Given_CardContructorOfTypeNull_IsType_When_GeneratingCard_ShouldRaiseError()
+        {
+            // ARRANGE
+
+            // ACT
+            Action comparison = () => { Card card = new Card(CardType.Unsupported); };
+
+            // ASSERT
+            comparison.Should().Throw<ArgumentException>().WithMessage($"Unsupported card type: {CardType.Unsupported}");
+
         }
 
     }
