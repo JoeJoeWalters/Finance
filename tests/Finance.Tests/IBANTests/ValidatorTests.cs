@@ -46,6 +46,7 @@ namespace Finance.Tests.IBANTests
         [InlineData("US64SVBKUS6S3300958879")] // Country does not seem to support IBAN!
         [InlineData("XX111")] // Too Short
         [InlineData("XX111111111111111111111111111111111")] // Too Long
+        [InlineData("AL472121100900000002356987XX")] // No Account validation for this country so will fail on numerics only
         public void Given_IBAN_IsInvalid(string iban)
         {
             // ARRANGE
