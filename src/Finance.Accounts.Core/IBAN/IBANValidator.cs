@@ -50,10 +50,9 @@ namespace Finance.Core.IBAN
             if (!paddedDigits.Equals(checkDigits))
                 return false;
 
+            string accountSection = iban.ValueInRangeOf(structure.Format, 'A');
             if (structure.AccountCheck)
             {
-                string accountSection = iban.ValueInRangeOf(structure.Format, 'A');
-                
                 Boolean result = AccountValidatorFactory.GetValidator(countryCode)
                     .Validate(accountSection, bankCode, accountSection);
 
@@ -62,8 +61,7 @@ namespace Finance.Core.IBAN
             else
             {
                 // Make sure the remaining characters are numeric
-                string checkAccount = iban.Substring(8, iban.Length - 8);
-                if (checkAccount.NumericsOnly() != checkAccount)
+                if (accountSection.NumericsOnly() != accountSection)
                     return false;
             }
 
