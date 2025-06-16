@@ -36,7 +36,7 @@ namespace Finance.Core.Cards
             if (!CardIdentity.Features.ContainsKey(cardType))
                 throw new ArgumentException($"Unsupported card type: {cardType}");
 
-            return Luhn.GenerateCard(CardIdentity.Features[cardType].CardMIIRanges, CardIdentity.Features[cardType].CardSizeRanges, true);
+            return Luhn.GenerateCard(CardIdentity.Features[cardType].CardMIIRanges, CardIdentity.Features[cardType].CardSizeRanges, CardIdentity.Features[cardType].LuhnRequired);
         }
     }
 }
