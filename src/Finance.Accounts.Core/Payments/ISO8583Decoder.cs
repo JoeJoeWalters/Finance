@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections;
+using System.Globalization;
 
 namespace Finance.Core.Payments
 {
@@ -12,10 +13,12 @@ namespace Finance.Core.Payments
             var fields = new ISO8583();
 
             // 1. Parse MTI (first 4 chars)
+            fields.MTI = message.Substring(0, 4);
             int pos = 4;
 
             // 2. Parse bitmap(s)
             string primaryBitmapHex = message.Substring(pos, 16);
+            fields.PrimaryBitmap = primaryBitmapHex;
             bool[] bitmap = ParseBitmap(primaryBitmapHex);
             pos += 16;
 
@@ -23,6 +26,7 @@ namespace Finance.Core.Payments
             if (bitmap[0])
             {
                 string secondaryBitmapHex = message.Substring(pos, 16);
+                fields.SecondaryBitmap = secondaryBitmapHex;
                 var secondaryBitmap = ParseBitmap(secondaryBitmapHex);
                 bool[] combined = new bool[128];
                 Array.Copy(bitmap, combined, 64);
@@ -324,16 +328,21 @@ namespace Finance.Core.Payments
 
         private static bool[] ParseBitmap(string bitmapHex)
         {
-            bool[] bitmap = new bool[64];
-            for (int i = 0; i < 16; i++)
+            if (bitmapHex.Length % 2 != 0)
             {
-                byte b = byte.Parse(bitmapHex.Substring(i, 2), NumberStyles.HexNumber);
-                for (int bit = 0; bit < 8; bit++)
-                {
-                    bitmap[i * 8 + bit] = (b & (1 << (7 - bit))) != 0;
-                }
+                throw new ArgumentException(String.Format(CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}", bitmapHex));
             }
-            return bitmap;
+
+            byte[] data = new byte[bitmapHex.Length / 2];
+            for (int index = 0; index < data.Length; index++)
+            {
+                string byteValue = bitmapHex.Substring(index * 2, 2);
+                data[index] = byte.Parse(byteValue, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+            }
+            BitArray bitArray = new BitArray(data);
+            bool[] boolArray = new bool[bitArray.Length];
+            bitArray.CopyTo(boolArray, 0);
+            return boolArray;
         }
 
         private static DateTime? ParseDateTime(string value, string format)

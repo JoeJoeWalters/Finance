@@ -2,6 +2,10 @@
 {
     public class ISO8583
     {
+        public string MTI { get; set; } = string.Empty; // Message Type Indicator
+        public string PrimaryBitmap { get; set; } = string.Empty;
+        public string SecondaryBitmap { get; set; } = string.Empty;
+
         // Field 2: Primary Account Number (PAN)
         public string? PrimaryAccountNumber { get; set; }
         // Field 3: Processing Code
