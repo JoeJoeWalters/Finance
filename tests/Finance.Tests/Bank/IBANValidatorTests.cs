@@ -5,9 +5,9 @@ using Finance.Core.IBAN.AccountValidators;
 using Finance.Core.Types;
 using System;
 
-namespace Finance.Tests.IBANTests
+namespace Finance.Tests.Bank
 {
-    public class ValidatorTests
+    public class IBANValidatorTests
     {
         // https://www.iban.com/testibans
         // https://iban.co.uk/examples.html

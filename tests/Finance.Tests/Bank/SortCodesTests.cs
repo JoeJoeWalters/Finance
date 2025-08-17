@@ -1,8 +1,8 @@
-using Finance.Core.SortCodes;
-using Finance.Core.SortCodes.Types;
+using Finance.Core.Bank;
 using AwesomeAssertions;
+using Finance.Core.Bank.Types;
 
-namespace Finance.Tests.SortCodes
+namespace Finance.Tests.Bank
 {
     public class SortCodesTests
     {

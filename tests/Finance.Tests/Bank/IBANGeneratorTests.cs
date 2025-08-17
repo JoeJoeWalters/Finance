@@ -1,9 +1,9 @@
 ﻿using AwesomeAssertions;
 using Finance.Core.IBAN;
 
-namespace Finance.Tests.IBANTests
+namespace Finance.Tests.Bank
 {
-    public class GeneratorTests
+    public class IBAnGeneratorTests
     {
         // https://iban.co.uk/examples.html
         [Theory]

@@ -1,4 +1,4 @@
-﻿namespace Finance.Core.SortCodes.Types
+﻿namespace Finance.Core.Bank.Types
 {
     public class BACSRecord
     {

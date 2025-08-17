@@ -1,11 +1,11 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
-using Finance.Core.SortCodes.Types;
+using Finance.Core.Bank.Types;
 using Finance.Core.Common;
 using System.Globalization;
 
-namespace Finance.Core.SortCodes
+namespace Finance.Core.Bank
 {
     public class SortCodes
     {
