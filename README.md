@@ -10,7 +10,8 @@ A .NET library for working with payments, cards, accounts and other financial pr
   - Validate card numbers using the Luhn algorithm.
   - Generate random card numbers for various card types.
 - Payments
-	- Handle payment processing and validation.
+	- ISO 20022 support for financial messages.
+	- ISO 8583 support for financial transaction messages.
 - IBAN
 	- Validate and format International Bank Account Numbers (IBAN).
 - Mastercard
